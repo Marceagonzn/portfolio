@@ -1,0 +1,437 @@
+/* Estilos generales */
+#particles-js{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: -1;
+}
+/* Estilos generales */
+html{
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    background-color: #0d0000;
+    color: white;
+    margin: 0;
+    padding: 0;
+
+}
+
+/* Estilo para el logotipo */
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    opacity: 60%;
+    width: 60px; /* Tamaño del logotipo */
+    height: auto;
+    cursor: pointer;
+    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    transition: transform 0.50s;
+}
+
+.logo:hover {
+    transform: scale(1.1); /* Efecto de zoom al pasar el cursor */
+}
+
+/* Sección del Título */
+.header-section {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.ascii-title {
+    font-size: 5px;
+    white-space: pre;
+    line-height: 1.2;
+    overflow: hidden;
+    animation: typing 6s steps(100, end);
+    display: inline-block;
+}
+
+.ascii-title.cursor {
+    border-right: 2px solid white;
+    animation: blink 0.5s step-end infinite;
+}
+
+.subtitle {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    margin-top: 20px;
+    color: #f0f0f0;
+}
+
+/* Icono de scroll */
+.scroll-down {
+    position: absolute;
+    bottom: 20px;
+    font-size: 24px;
+    color: #f0f0f0;
+    animation: bounce 2s infinite;
+    cursor: pointer;
+}
+
+.scroll-down span:hover {
+    color: #ffffff;
+}
+
+/* Sección de Habilidades */
+.skills-section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.skills-title {
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.skills-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.skill {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #292929;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Necesario para los tooltips */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
+    object-fit: contain;
+}
+
+.skill:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+}
+
+/* Estilo del tooltip */
+.skill:hover .tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.tooltip {
+    position: absolute;
+    bottom: -30px;
+    /*left: 20%;*/
+    transform: translateX(-50%) translateY(10px);
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.skill img {
+    width: 50%;
+    height: auto;
+}
+/* Sección About Me */
+.about-section {
+    padding: 40px 200px;
+    display: flex;
+    flex-wrap: wrap;
+    /*background-color: #121212d3;*/
+    color: white;
+    align-items: center;
+    gap: 20px;
+}
+
+.about-text {
+    flex: 1;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: left;
+    padding: 20px;
+    max-width: 1200px;
+}
+
+.about-photo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.about-photo img {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    margin-bottom: 15px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.about-photo img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    transition: transform 0.3s, background-color 0.3s;
+}
+
+.social-icons a:hover {
+    transform: scale(1.1);
+
+}
+
+/* Sección de Contacto */
+.contact-section {
+    padding: 40px 20px;
+
+    color: white;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-family: Arial, sans-serif;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #00bcd4;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border: none;
+    border-radius: 5px;
+    background-color: #2c2c2c;
+    color: white;
+    outline: none;
+    resize: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    transform: scale(1.02);
+}
+
+.contact-form button {
+    padding: 15px;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+    background-color: #00bcd4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #028a9c;
+    transform: scale(1.05);
+}
+
+.contact-form button:active {
+    transform: scale(0.98);
+}
+
+/* Pie de página */
+.footer {
+    background-color: #0d0d0d;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    margin-top: 40px;
+}
+
+.footer a {
+    color: #00bcd4;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.footer a:hover {
+    color: #028a9c;
+}
+
+
+
+
+/* Animaciones */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+
+/* Adaptaciones para pantallas más grandes */
+@media (min-width: 768px) {
+    .ascii-title {
+        font-size: 10px;
+    }
+    .subtitle {
+        font-size: 22px;
+    }
+    .skills-title {
+        font-size: 32px;
+    }
+}
+/* Dispositivos móviles (pantallas pequeñas) */
+@media ( max-width: 767px) {
+    .ascii-title {
+        font-size: 3px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .skill {
+        flex-direction: row;
+        width: 50px;  /* celulares */
+        height: 50px;
+        
+    }
+    .skill img {
+        width: 55%;  /* Ajusta el tamaño de la imagen dentro del icono */
+        height: auto;
+    }
+    .skill:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.7);
+    }
+
+    .about-section {
+        flex-direction: row;
+        padding: 0;
+        align-items: center;
+    }
+
+    .about-photo img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 15px;
+    }
+
+    .contact-form button {
+        font-size: 5px;
+    }
+}
+
+/* Dispositivos tablet (pantallas medianas) */
+@media (max-width: 1024px) {
+    .ascii-title {
+        font-size: 3px;
+    }
+    .skills-icons {
+        flex-wrap:nowrap
+    }
+    .about-section{
+        flex-direction: column;
+    }
+    .about-text {
+        font-size: 20px;
+        margin-left: 0;
+    }
+
+    .about-photo img {
+        width: 220px;
+        height: 220px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        font-size: 15px;
+    }
+
+    .contact-form button {
+        font-size: 22px;
+    }
+    .contact-form{
+        margin-right: 25px;
+    }
+}
+/* Dispositivos grandes (pantallas más grandes) */
+@media (min-width: 1025px) {
+    .about-section {
+        gap: 30px;
+    }
+
+    .about-text {
+        font-size: 22px;
+    }
+}
+
