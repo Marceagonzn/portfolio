@@ -12,10 +12,23 @@
     <!-- particles conteiner -->
     <div id="particles-js"></div>
 
+    <!-- Botón de volver arriba -->
+    <button id="back-to-top" title="Volver arriba">▲</button>
+
     <!-- Logotipo -->
     <a href="#about-me">
         <img src="img/mi-logo.png" alt="Logotipo de Marcelo" class="logo" id="logo">
     </a>
+
+    <!--Selector de idioma-->
+    <header>
+        <div class="language-selector">
+            <select id="language-select">
+                <option value="es">Español</option>
+                <option value="en">English</option>
+            </select>
+        </div>
+    </header>
     
     <!--Header section-->
     <section class="header-section">
@@ -36,7 +49,7 @@
         </div>
 
         <!--Subtitle-->
-        <div class="subtitle">
+        <div class="subtitle" data-translate="subtitle">
             i'm informatic engineering student and software developer
         </div>
 
@@ -44,7 +57,7 @@
     
     <!--Skills section-->
     <section class="skills-section">
-        <h2 class="skills-title">learning skills</h2>
+        <h2 class="skills-title" data-translate="skillsTitle">learning skills</h2>
         <div class="skills-icons">
             <div class="skill">
                 <img src="img/html-icon.png" alt="HTML Icon">
@@ -77,8 +90,8 @@
     <section class="about-section" id="about-me">
         <!-- Texto del About Me -->
         <div class="about-text">
-            <h2>About me</h2>
-            <p>
+            <h2 data-translate="aboutMeTitle">About me</h2>
+            <p data-translate="aboutMeText">
                 Hello! I am a passionate Computer Engineering student with interest in the development of web and mobile applications. I love learning new technologies and applying my knowledge in real projects. My goal is to become a professional developer who can provide creative and innovative solutions.
             </p>
         </div>
@@ -115,8 +128,8 @@
 
     <!--Contact-->
     <section class="contact-section">
-        <h2>Contacto</h2>
-        <p>¿Tienes alguna consulta o quieres trabajar conmigo? Completa el formulario a continuación y me pondré en contacto contigo lo antes posible.</p>
+        <h2 data-translate="contactTitle">Contacto</h2>
+        <p data-translate="contactText">¿Tienes alguna consulta o quieres trabajar conmigo? Completa el formulario a continuación y me pondré en contacto contigo lo antes posible.</p>
         <form class="contact-form">
             <input type="text" placeholder="Nombre completo" required>
             <input type="email" placeholder="Correo electrónico" required>
@@ -127,12 +140,13 @@
 
     <!-- Pie de página -->
     <footer class="footer">
-        <p>Diseño realizado por <a href="https://github.com/Marceagonzn" target="_blank">Marcelo González</a></p>
+        <p data-translate="footerText">Diseño realizado por <a href="https://github.com/Marceagonzn" target="_blank">Marcelo González</a></p>
     </footer>
 
 
 <script src="js/particles.min.js"></script>
 <script src="js/particles.js"></script>
+<script src="js/script.js"></script>
 
 
 </body>
