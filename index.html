@@ -146,16 +146,27 @@
     </section>
 
 
-    <!--Contact-->
+    <!-- Contact -->
     <section class="contact-section">
         <h2 data-translate="contactTitle">Contacto</h2>
-        <p data-translate="contactText">¿Tienes alguna consulta o quieres trabajar conmigo? Completa el formulario a continuación y me pondré en contacto contigo lo antes posible.</p>
-        <form class="contact-form" action="https://formspree.io/f/mqaqbroz" method="POST">
-            <input type="text" name="name" placeholder="Nombre completo" required>
-            <input type="email" name="email" placeholder="Correo electrónico" required>
-            <textarea name="message" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+        <p data-translate="contactText">
+            ¿Tienes alguna consulta o quieres trabajar conmigo? Completa el formulario a continuación y me pondré en
+            contacto contigo lo antes posible.
+        </p>
+
+        <form class="contact-form" id="contact-form" action="https://formspree.io/f/mqaqbroz" method="POST">
+            <label for="name">Nombre completo</label>
+            <input type="text" id="name" name="name" placeholder="Nombre completo" required>
+
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+
+            <label for="message">Mensaje</label>
+            <textarea id="message" name="message" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
+
             <button type="submit">Enviar mensaje</button>
-            <p id="success-message" style="display:none; color:green; margin-top:10px;">
+
+            <p id="success-message" style="display:none; color:limegreen; margin-top:10px;">
                 ¡Mensaje enviado correctamente!
             </p>
         </form>
