@@ -100,7 +100,7 @@
     
         <!-- Foto y redes sociales -->
         <div class="about-photo">
-            <img src="img/mi-logo.png" alt="Mi Foto">
+            <img src="img/mi-photo.jpg" alt="Mi Foto">
             <div class="social-icons">
 
                 <a href="https://github.com/Marceagonzn" target="_blank" title="GitHub" >
@@ -127,23 +127,25 @@
             </div>
         </div>
     </section>
+    <!-- Proyectos -->
 
-      <!-- Proyectos -->
-       <!--
-    <section class="projects-section">
+    <section class="projects-section" id="projects">
         <h2 data-translate="projects-title">Proyectos</h2>
-        <div class="project">
-            <img src="img/proyecto1.jpg" alt="Captura de pantalla del Proyecto 1" />
-            <h3 data-translate="project1-title">Proyecto 1</h3>
-            <p data-translate="project1-description">Descripción breve del proyecto 1.</p>
+        <div class="projects-carousel">
+            <button class="carousel-button prev" aria-label="Anterior">&#10094;</button>
+            <div class="projects-container" id="projects-container">
+                <!-- Aquí se insertarán los proyectos dinámicamente -->
+            </div>
+            <button class="carousel-button next" aria-label="Siguiente">&#10095;</button>
         </div>
-        <div class="project">
-            <img src="img/proyecto2.jpg" alt="Captura de pantalla del Proyecto 2" />
-            <h3 data-translate="project2-title">Proyecto 2</h3>
-            <p data-translate="project2-description">Descripción breve del proyecto 2.</p>
-        </div>-->
-        <!-- Agrega más proyectos si lo deseas -->
+        <div class="carousel-dots">
+            <!-- Los puntos de navegación se agregarán dinámicamente -->
+        </div>
     </section>
+
+     
+
+        <!-- Agrega más proyectos si lo deseas -->
 
 
     <!-- Contact -->
@@ -179,6 +181,7 @@
 
 
 <script src="js/particles.min.js"></script>
+<script src="js/project.js"></script>
 <script src="js/particles.js"></script>
 <script src="js/script.js"></script>
 <script>
