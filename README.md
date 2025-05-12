@@ -1,5 +1,6 @@
 
 # Portafolio
+![Screenshot](img/screen.gif)
 
 
 ## 🔗 Links
