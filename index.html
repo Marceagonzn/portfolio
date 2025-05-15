@@ -85,6 +85,10 @@
                 <img src="img/py-icon.png" alt="Python Icon">
                 <div class="tooltip">Python</div>
             </div>
+            <div class="skill">
+                <img src="img/c++-icon.png" alt="Python Icon">
+                <div class="tooltip">C++</div>
+            </div>
         </div>
     </section>
 
@@ -115,9 +119,6 @@
                     <img src="img/youtube-icon.png" alt="youtube" style="width: 100%; height: auto;">
                 </a> -->
 
-               <!--  <a href="https://www.tiktok.com/@marceagonz19" target="_blank" title="tiktok">
-                    <img src="img/tiktok-icon.png" alt="youtube" style="width: 100%; height: auto;">
-                </a>-->
 
                 <a href="https://x.com/Marcegonz19" target="_blank" title="Twitter">
                     <img src="img/x-icon.jpg" alt="Twitter" style="width: 100%; height: auto;">
@@ -127,34 +128,132 @@
             </div>
         </div>
     </section>
-    <!-- Proyectos -->
 
+
+    <!-- Sección de Proyectos y Certificados -->
     <section class="projects-section" id="projects">
-        <h2 data-translate="projects-title">Proyectos</h2>
-        <div class="projects-carousel">
-            <button class="carousel-button prev" aria-label="Anterior">&#10094;</button>
-            <div class="projects-container" id="projects-container">
-                <!-- Aquí se insertarán los proyectos dinámicamente -->
+        <h2 data-translate="projects-title">Proyectos - Certificados</h2>
+    
+        <!-- Menú de pestañas -->
+        <div class="tabs">
+            <button class="tab-button active" data-tab="proyectos">Mis proyectos</button>
+            <button class="tab-button" data-tab="certificados">Mis certificados</button>
+            <!--<button class="tab-button" data-tab="cv">Descargar CV</button>-->
+        </div>
+    
+        <!-- Contenido de pestañas -->
+        <div class="tab-content active" id="tab-proyectos">
+            <div class="projects-carousel">
+                <button class="carousel-button prev" aria-label="Anterior">&#10094;</button>
+                <div class="projects-container" id="projects-container">
+                    <!-- Aquí se insertarán los proyectos dinámicamente -->
+                </div>
+                <button class="carousel-button next" aria-label="Siguiente">&#10095;</button>
             </div>
-            <button class="carousel-button next" aria-label="Siguiente">&#10095;</button>
+            <div class="carousel-dots"></div>
         </div>
-        <div class="carousel-dots">
-            <!-- Los puntos de navegación se agregarán dinámicamente -->
+    
+        <div class="tab-content" id="tab-certificados">
+            <div class="certificates-grid">
+                <!-- Certificado 1 -->
+                <div class="certificate-card">
+                    <div class="certificate-preview">
+                        <img src="img/certificates/certificado1.png" alt="Certificado HTML">
+                    </div>
+                    <h3>Certificado Cisco</h3>
+                    <p>Curso fundamento basico de redes</p>
+                    <div class="certificate-date">Emitido: Mayo 2025</div>
+                </div>
+    
+                <!-- Certificado 2 -->
+                <div class="certificate-card">
+                    <div class="certificate-preview">
+                        <img src="img/certificates/certificado2.png" alt="Certificado JavaScript">
+                    </div>
+                    <h3>Certificado Java</h3>
+                    <p>Programación Basica en Java</p>
+                    <div class="certificate-date">Emitido: Diciembre 2020</div>
+                </div>
+    
+                <!-- Certificado 3 -->
+                <div class="certificate-card">
+                    <div class="certificate-preview">
+                        <img src="img/certificates/certificado3.png" alt="Certificado React">
+                    </div>
+                    <h3>Certificado Python</h3>
+                    <p>Programación Basica en Python </p>
+                    <div class="certificate-date">Emitido: Diciembre 2020</div>
+                </div>
+    
+                <!-- Certificado 4 -->
+                <div class="certificate-card">
+                    <div class="certificate-preview">
+                        <img src="img/certificates/certificado4.png" alt="Certificado React">
+                    </div>
+                    <h3>Certificado Creacion de Paginas Web</h3>
+                    <p>Creacion de Paginas Web </p>
+                    <div class="certificate-date">Emitido: Marzo 2025</div>
+                </div>
+    
+                <!-- Certificado 5 -->
+                <div class="certificate-card">
+                    <div class="certificate-preview">
+                        <img src="img/certificates/certificado5.png" alt="Certificado React">
+                    </div>
+                    <h3>Certificado Curso De Tecnico en Computadoras</h3>
+                    <p>Tecnico en computadoras </p>
+                    <div class="certificate-date">Emitido: Mayo 2025</div>
+                </div>
+    
+                <!-- Puedes agregar más certificados según necesites -->
+            </div>
         </div>
-    </section>
+
+  <!-- Contenido de la pestaña CV -->
+   <!-- <div class="tab-content" id="tab-cv">
+        <div class="cv-container">
+            <div class="cv-preview-container">
+                <div class="cv-preview">
+                    <img src="img/cv-preview.jpg" alt="Previsualización de CV">
+                    <div class="cv-overlay">
+                        <a href="" target="_blank" class="view-btn">Ver completo</a>
+                        <a href="" download class="download-btn">
+                            <span class="download-icon">↓</span> Descargar
+                        </a>
+                    </div>
+                </div>
+                <div class="cv-info">
+                    <h3>Curriculum Vitae</h3>
+                    <p>Documento profesional que resume mi experiencia, educación y habilidades.</p>
+                    <div class="cv-details">
+                        <div class="cv-detail">
+                            <span class="detail-label">Formato:</span>
+                            <span class="detail-value">PDF</span>
+                        </div>
+                        <div class="cv-detail">
+                            <span class="detail-label">Tamaño:</span>
+                            <span class="detail-value">1.2 MB</span>
+                        </div>
+                        <div class="cv-detail">
+                            <span class="detail-label">Actualizado:</span>
+                            <span class="detail-value">Mayo 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>-->
+</section>
 
      
 
-        <!-- Agrega más proyectos si lo deseas -->
+
 
 
     <!-- Contact -->
     <section class="contact-section">
         <h2 data-translate="contactTitle">Contacto</h2>
-        <p data-translate="contactText">
-            ¿Tienes alguna consulta o quieres trabajar conmigo? Completa el formulario a continuación y me pondré en
-            contacto contigo lo antes posible.
-        </p>
+        <p data-translate="contactText">¿Tienes una idea interesante o un proyecto en mente? Como apasionado del desarrollo, siempre estoy buscando nuevos desafíos y oportunidades para aprender. Hablemos sobre cómo puedo contribuir con mis habilidades técnicas y creatividad.</p>
 
         <form class="contact-form" id="contact-form" action="https://formspree.io/f/mqaqbroz" method="POST">
             <label for="name">Nombre completo</label>
@@ -176,40 +275,68 @@
 
     <!-- Pie de página -->
     <footer class="footer">
-        <p data-translate="footerText">Diseño realizado por <a href="https://github.com/Marceagonzn" target="_blank">Marcelo González</a></p>
+        <p data-translate="footerText">Diseño y desarrollo realizado por <a href="https://github.com/Marceagonzn" target="_blank">Marcelo González</a></p>
     </footer>
 
+<!-- Scripts -->
 
 <script src="js/particles.min.js"></script>
 <script src="js/project.js"></script>
 <script src="js/particles.js"></script>
 <script src="js/script.js"></script>
+<!--Script para formulario-->
 <script>
-    document.querySelector('.contact-form').addEventListener('submit', async function (e) {
-        e.preventDefault(); // Evita recargar la página
-
-        const form = e.target;
-        const successMessage = document.getElementById('success-message');
-
-        const data = new FormData(form);
-
-        const response = await fetch(form.action, {
-            method: form.method,
-            body: data,
-            headers: {
-                'Accept': 'application/json'
+// Script para el menú de pestañas
+document.addEventListener('DOMContentLoaded', function() {
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+  
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const target = button.getAttribute('data-tab');
+    
+            // Remover clase active de todos los botones y contenidos
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+    
+            // Agregar clase active al botón y contenido seleccionado
+            button.classList.add('active');
+            document.getElementById(`tab-${target}`).classList.add('active');
+            
+            // Si es la pestaña de proyectos, recalcular el carrusel
+            if (target === 'proyectos') {
+                setTimeout(() => {
+                    if (window.calculateContainerWidth) {
+                        window.calculateContainerWidth();
+                        window.goToSlide(window.currentIndex || 0);
+                    }
+                }, 100);
             }
         });
-
-        if (response.ok) {
-            form.reset(); // Limpia el formulario
-            successMessage.style.display = 'block'; // Muestra el mensaje
-        } else {
-            alert('Ocurrió un error. Por favor intenta nuevamente.');
-        }
+    });
+    
+    // Activar la primera pestaña por defecto
+    if (tabButtons.length > 0) {
+        tabButtons[0].click();
+    }
+});
+</script>
+<!--Script para menu de seccione de proyect-->
+<script>
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+  
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const target = button.getAttribute('data-tab');
+  
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+  
+        button.classList.add('active');
+        document.getElementById(`tab-${target}`).classList.add('active');
+      });
     });
 </script>
-
-
 </body>
 </html>
