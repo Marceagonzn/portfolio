@@ -7,7 +7,7 @@
             aboutMeTitle: "Sobre mí",
             aboutMeText: "¡Hola! Soy un apasionado estudiante de Ingeniería en Computación con interés en el desarrollo de aplicaciones web y móviles. Me encanta aprender nuevas tecnologías y aplicar mis conocimientos en proyectos reales. Mi objetivo es convertirme en un desarrollador profesional que pueda brindar soluciones creativas e innovadoras.",
             contactTitle: "Contacto",
-            contactText: "¿Tienes alguna consulta o quieres trabajar conmigo? Completa el formulario a continuación y me pondré en contacto contigo lo antes posible.",
+            contactText: "¿Tienes una idea interesante o un proyecto en mente? Como apasionado del desarrollo, siempre estoy buscando nuevos desafíos y oportunidades para aprender. Hablemos sobre cómo puedo contribuir con mis habilidades técnicas y creatividad.",
             footerText: "Diseño realizado por <a href='https://github.com/Marceagonzn' target='_blank'>Marcelo González</a>"
         },
         en: {
@@ -17,7 +17,7 @@
             aboutMeTitle: "About me",
             aboutMeText: "Hello! I am a passionate Computer Engineering student with interest in the development of web and mobile applications. I love learning new technologies and applying my knowledge in real projects. My goal is to become a professional developer who can provide creative and innovative solutions.",
             contactTitle: "Contact",
-            contactText: "Do you have any questions or want to work with me? Fill out the form below and I will get back to you as soon as possible.",
+            contactText: "Do you have an interesting idea or a project in mind? As someone passionate about development, I'm always looking for new challenges and opportunities to learn. Let's talk about how I can contribute with my technical skills and creativity.",
             footerText: "Design by <a href='https://github.com/Marceagonzn' target='_blank'>Marcelo González</a>"
         }
     };
