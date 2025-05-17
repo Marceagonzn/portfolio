@@ -6,21 +6,20 @@ async function cargarProyectosDeGitHub() {
     const username = 'Marceagonzn';
     
     let currentIndex = 0;
-    let projectsPerPage = 3; // Valor por defecto, se ajustará en resize
+    let projectsPerPage = 3;
     let isDragging = false;
     let startPosX = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
+    let startPosY = 0;
+    let isHorizontalScroll = false;
+    let repos = [];
 
-    // Ajustar proyectos por página según el ancho
     function adjustProjectsPerPage() {
         const width = window.innerWidth;
-        if (width < 768) projectsPerPage = 1; // Móviles
-        else if (width < 1024) projectsPerPage = 2; // Tablets
-        else projectsPerPage = 3; // Escritorio
+        if (width < 768) projectsPerPage = 1;
+        else if (width < 1024) projectsPerPage = 2;
+        else projectsPerPage = 3;
     }
 
-    // Función para obtener imagen del repositorio
     async function getRepoImage(repoName) {
         try {
             return `https://opengraph.githubassets.com/1/${username}/${repoName}`;
@@ -30,7 +29,6 @@ async function cargarProyectosDeGitHub() {
         }
     }
 
-    // Función para mover el carrusel
     function goToSlide(index) {
         const maxIndex = Math.ceil(repos.length / projectsPerPage) - 1;
         currentIndex = Math.max(0, Math.min(index, maxIndex));
@@ -44,7 +42,6 @@ async function cargarProyectosDeGitHub() {
         updateDots();
     }
 
-    // Función para actualizar los puntos
     function updateDots() {
         const dots = document.querySelectorAll('.carousel-dot');
         dots.forEach((dot, index) => {
@@ -52,39 +49,60 @@ async function cargarProyectosDeGitHub() {
         });
     }
 
-    // Eventos táctiles para móviles
     function setupTouchEvents() {
-        projectsContainer.addEventListener('touchstart', touchStart);
-        projectsContainer.addEventListener('touchmove', touchMove);
-        projectsContainer.addEventListener('touchend', touchEnd);
+        projectsContainer.addEventListener('touchstart', touchStart, { passive: true });
+        projectsContainer.addEventListener('touchmove', touchMove, { passive: false });
+        projectsContainer.addEventListener('touchend', touchEnd, { passive: true });
     }
 
     function touchStart(e) {
         isDragging = true;
         startPosX = e.touches[0].clientX;
+        startPosY = e.touches[0].clientY;
+        isHorizontalScroll = false;
         projectsContainer.style.scrollBehavior = 'auto';
     }
 
     function touchMove(e) {
         if (!isDragging) return;
-        e.preventDefault();
-        const currentPosition = e.touches[0].clientX;
-        const diff = startPosX - currentPosition;
-        projectsContainer.scrollLeft += diff;
-        startPosX = currentPosition;
+        
+        const currentX = e.touches[0].clientX;
+        const currentY = e.touches[0].clientY;
+        const diffX = Math.abs(startPosX - currentX);
+        const diffY = Math.abs(startPosY - currentY);
+        
+        // Determinar si el movimiento es principalmente horizontal
+        if (!isHorizontalScroll) {
+            if (diffX > diffY && diffX > 10) {
+                isHorizontalScroll = true;
+            } else if (diffY > diffX && diffY > 10) {
+                isHorizontalScroll = false;
+                return; // Permitir scroll vertical
+            }
+        }
+        
+        if (isHorizontalScroll) {
+            e.preventDefault();
+            const movementX = startPosX - currentX;
+            projectsContainer.scrollLeft += movementX;
+            startPosX = currentX;
+            startPosY = currentY;
+        }
     }
 
     function touchEnd() {
+        if (!isDragging) return;
+        
         isDragging = false;
         projectsContainer.style.scrollBehavior = 'smooth';
         
-        // Ajustar al slide más cercano
-        const slideWidth = projectsContainer.offsetWidth / projectsPerPage;
-        const newIndex = Math.round(projectsContainer.scrollLeft / slideWidth);
-        goToSlide(newIndex);
+        if (isHorizontalScroll) {
+            const slideWidth = projectsContainer.offsetWidth / projectsPerPage;
+            const newIndex = Math.round(projectsContainer.scrollLeft / slideWidth);
+            goToSlide(newIndex);
+        }
     }
 
-    // Renderizar proyectos
     async function renderProjects() {
         projectsContainer.innerHTML = '<div class="loading">Cargando proyectos...</div>';
         dotsContainer.innerHTML = '';
@@ -95,7 +113,6 @@ async function cargarProyectosDeGitHub() {
             
             projectsContainer.innerHTML = '';
             
-            // Crear tarjetas de proyectos
             for (const repo of repos) {
                 const imageUrl = await getRepoImage(repo.name);
                 
@@ -116,10 +133,8 @@ async function cargarProyectosDeGitHub() {
                 projectsContainer.appendChild(projectElement);
             }
 
-            // Ajustar inicialmente
             adjustProjectsPerPage();
             
-            // Crear puntos de navegación
             const dotCount = Math.ceil(repos.length / projectsPerPage);
             for (let i = 0; i < dotCount; i++) {
                 const dot = document.createElement('div');
@@ -129,7 +144,6 @@ async function cargarProyectosDeGitHub() {
                 dotsContainer.appendChild(dot);
             }
 
-            // Configurar eventos
             setupEventListeners();
             setupTouchEvents();
 
@@ -144,7 +158,6 @@ async function cargarProyectosDeGitHub() {
         }
     }
 
-    // Configurar event listeners
     function setupEventListeners() {
         prevButton.addEventListener('click', () => goToSlide(currentIndex - 1));
         nextButton.addEventListener('click', () => goToSlide(currentIndex + 1));
@@ -161,7 +174,6 @@ async function cargarProyectosDeGitHub() {
         });
     }
 
-    // Iniciar
     await renderProjects();
 }
 
