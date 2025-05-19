@@ -21,6 +21,11 @@
             footerText: "Design by <a href='https://github.com/Marceagonzn' target='_blank'>Marcelo González</a>"
         }
     };
+    
+// En tu script.js
+if (navigator.userAgent.includes('Instagram')) {
+    document.querySelector('.ascii-title').style.fontSize = '6px';
+}
 
     // Función para cambiar el idioma
     function changeLanguage(lang) {
