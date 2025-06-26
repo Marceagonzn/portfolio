@@ -1411,6 +1411,13 @@ body {
         width: calc(100% - 10px); /* Ajuste final para móviles muy pequeños */
         margin: 0 10px;
     }
+    .project-card img {
+        max-width: 100%; /* La imagen nunca será más grande que su contenedor padre */
+        height: auto;    /* Mantiene la proporción de la imagen */
+        display: block;  /* Ayuda a eliminar espacios extra y a que max-width funcione bien */
+        object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión, recortando si es necesario */
+        border-radius: 8px; /* Si tienes border-radius en la tarjeta, también en la imagen */
+    }
     .carousel-button {
         width: 35px;
         height: 35px;
@@ -1425,5 +1432,3 @@ body {
     }
 }
 
-/* Styles for preloader and animations (from original style.css, ensure they are here too) */
-/* ... (existing preloader, scroll-animate, and hero section animations styles) ... */
