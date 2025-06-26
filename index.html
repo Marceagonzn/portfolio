@@ -11,18 +11,28 @@
         <link rel="icon" type="image/png" href="img/mi-logo.png" />
       </head>
 <body>
-    <!-- particles conteiner -->
     <div id="particles-js"></div>
 
-    <!-- Botón de volver arriba -->
-    <button id="back-to-top" title="Volver arriba">▲</button>
+    <button id="back-to-top" title="Volver arriba">⇡</button>
 
-    <!-- Logotipo -->
     <a href="#about-me">
         <img src="img/mi-logo.png" alt="Logotipo de Marcelo" class="logo" id="logo">
     </a>
+    <!-- Preloader -->
+    <div id="preloader" class="preloader">
+        <div class="terminal-loader">
+            <div class="terminal-header">
+                <div class="terminal-title">⚠️Estado...</div>
+                <div class="terminal-controls">
+                    <div class="control close"></div>
+                    <div class="control minimize"></div>
+                    <div class="control maximize"></div>
+                </div>
+            </div>
+            <div class="text">Cargando...</div>
+        </div>
+    </div>
 
-    <!--Selector de idioma-->
     <header>
         <div class="language-selector">
             <select id="language-select">
@@ -31,32 +41,27 @@
             </select>
         </div>
     </header>
-    
-    <!--Header section-->
-    <section class="header-section">
-        <div class="ascii-container">
-            <div class="ascii-title">
-                888    888 d8b         8888888 d8b                  888b     d888                                  888               .d8888b.                                      888                  
-                888    888 Y8P           888   88P                  8888b   d8888                                  888              d88P  Y88b                                     888                  
-                888    888               888   8P                   88888b.d88888                                  888              888    888                                     888                  
-                8888888888 888           888   "  88888b.d88b.      888Y88888P888  8888b.  888d888 .d8888b .d88b.  888  .d88b.      888         .d88b.  88888b.  88888888  8888b.  888  .d88b. 88888888 
-                888    888 888           888      888 "888 "88b     888 Y888P 888     "88b 888P"  d88P"   d8P  Y8b 888 d88""88b     888  88888 d88""88b 888 "88b    d88P      "88b 888 d8P  Y8b   d88P  
-                888    888 888           888      888  888  888     888  Y8P  888 .d888888 888    888     88888888 888 888  888     888    888 888  888 888  888   d88P   .d888888 888 88888888  d88P   
-                888    888 888 d8b       888      888  888  888     888   "   888 888  888 888    Y88b.   Y8b.     888 Y88..88P     Y88b  d88P Y88..88P 888  888  d88P    888  888 888 Y8b.     d88P    
-                888    888 888 88P     8888888    888  888  888     888       888 "Y888888 888     "Y8888P "Y8888  888  "Y88P"       "Y8888P88  "Y88P"  888  888 88888888 "Y888888 888  "Y8888 88888888 
-                            8P                                                                                                                                                                       
-                            "                                                                                                                                                                        
-            </div>
-        </div>
-        <!--Subtitle-->
-        <div class="subtitle" data-translate="subtitle">
-            I'm an Informatics Engineering student and software developer.
-        </div>
 
+    <section class="header-section scroll-animate">
+        <div class="hero-image-container">
+            </div>
+        <div class="hero-text-overlay">
+            <h1 class="hero-title" id="heroTitle" data-translate="titleName">
+                ¡Hola! Soy <span class="highlight-name">&lt;Marcelo González/&gt; </span>
+            </h1>
+            <p class="hero-subtitle" data-translate="subtitle">
+                Soy estudiante de ingeniería informática y desarrollador de software.
+            </p>
+        </div>
+        <div class="macintosh-icon">
+            <img src="./img/macintosh1.png" alt="Macintosh Icon">
+        </div>
     </section>
+
+    
     
     <!--Skills section-->
-    <section class="skills-section">
+    <section class="skills-section scroll-animate">
         <h2 class="skills-title" data-translate="skillsTitle">learning skills</h2>
         <div class="skills-icons">
             <div class="skill">
@@ -91,7 +96,7 @@
     </section>
 
     <!--About Me-->
-    <section class="about-section" id="about-me">
+    <section class="about-section scroll-animate" id="about-me">
         <!-- Texto del About Me -->
         <div class="about-text">
             <h2 data-translate="aboutMeTitle">About me</h2>
@@ -103,145 +108,85 @@
         <!-- Foto y redes sociales -->
         <div class="about-photo">
             <img src="img/mi-photo.jpg" alt="Mi Foto">
-            <div class="social-icons">
-
-                <a href="https://github.com/Marceagonzn" target="_blank" title="GitHub" >
-                    <img src="img/github-icon.png" alt="GitHub" style="width: 100%; height: auto;">
-                </a>
-
-                <a href="https://www.instagram.com/marcegonzn/" target="_blank" title="instagram">
-                    <img src="img/ig-logo.png" alt="LinkedIn" style="width: 100%; height: auto;">
-                </a>
-
-               <!--  <a href="https://www.youtube.com/@marcegonz19/videos" target="_blank" title="Youtube">
-                    <img src="img/youtube-icon.png" alt="youtube" style="width: 100%; height: auto;">
-                </a> -->
-
-
-                <a href="https://x.com/Marcegonz19" target="_blank" title="Twitter">
-                    <img src="img/x-icon.jpg" alt="Twitter" style="width: 100%; height: auto;">
-                </a>
-                
-
-            </div>
+            <div class="social-card">
+                <button class="Btn github" onclick="window.open('https://github.com/Marceagonzn', '_blank');">
+                  <span class="svgContainer">
+                    <svg height="1.6em" viewBox="0 0 496 512" fill="white">
+                      <path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path>
+                    </svg>
+                  </span>
+                  <span class="BG"></span>
+                </button>
+              
+                <button class="Btn instagram" onclick="window.open('https://www.instagram.com/marcegonzn/', '_blank');">
+                  <span class="svgContainer">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="1.6em" fill="white" viewBox="0 0 448 512">
+                        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                    </svg>
+                  </span>
+                  <span class="BG"></span>
+                </button>
+              
+                <button class="Btn x" onclick="window.open('https://x.com/Marcegonz19', '_blank');">
+                  <span class="svgContainer">
+                    <svg fill="white" class="svgIcon" xmlns="http://www.w3.org/2000/svg" height="1.6em" viewBox="0 0 448 512">
+                        <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>                    
+                    </svg>
+                  </span>
+                  <span class="BG"></span>
+                </button>
+              </div>
         </div>
     </section>
 
 
     <!-- Sección de Proyectos y Certificados -->
-    <section class="projects-section" id="projects">
-        <h2 data-translate="projects-title">Proyectos - Certificados</h2>
-    
-        <!-- Menú de pestañas -->
-        <div class="tabs">
-            <button class="tab-button active" data-tab="proyectos">Mis proyectos</button>
-            <button class="tab-button" data-tab="certificados">Mis certificados</button>
-            <!--<button class="tab-button" data-tab="cv">Descargar CV</button>-->
-        </div>
-    
-        <!-- Contenido de pestañas -->
-        <div class="tab-content active" id="tab-proyectos">
-            <div class="projects-carousel">
-                <button class="carousel-button prev" aria-label="Anterior">&#10094;</button>
-                <div class="projects-container" id="projects-container">
-                    <!-- Aquí se insertarán los proyectos dinámicamente -->
-                </div>
-                <button class="carousel-button next" aria-label="Siguiente">&#10095;</button>
-            </div>
-            <div class="carousel-dots"></div>
-        </div>
-    
-        <div class="tab-content" id="tab-certificados">
-            <div class="certificates-grid">
-                <!-- Certificado 1 -->
-                <div class="certificate-card">
-                    <div class="certificate-preview">
-                        <img src="img/certificates/certificado1.png" alt="Certificado HTML">
-                    </div>
-                    <h3>Certificado Cisco</h3>
-                    <p>Curso fundamento basico de redes</p>
-                    <div class="certificate-date">Emitido: Mayo 2025</div>
-                </div>
-    
-                <!-- Certificado 2 -->
-                <div class="certificate-card">
-                    <div class="certificate-preview">
-                        <img src="img/certificates/certificado2.png" alt="Certificado JavaScript">
-                    </div>
-                    <h3>Certificado Java</h3>
-                    <p>Programación Basica en Java</p>
-                    <div class="certificate-date">Emitido: Diciembre 2020</div>
-                </div>
-    
-                <!-- Certificado 3 -->
-                <div class="certificate-card">
-                    <div class="certificate-preview">
-                        <img src="img/certificates/certificado3.png" alt="Certificado React">
-                    </div>
-                    <h3>Certificado Python</h3>
-                    <p>Programación Basica en Python </p>
-                    <div class="certificate-date">Emitido: Diciembre 2020</div>
-                </div>
-    
-                <!-- Certificado 4 -->
-                <div class="certificate-card">
-                    <div class="certificate-preview">
-                        <img src="img/certificates/certificado4.png" alt="Certificado React">
-                    </div>
-                    <h3>Certificado Creacion de Paginas Web</h3>
-                    <p>Creacion de Paginas Web </p>
-                    <div class="certificate-date">Emitido: Marzo 2025</div>
-                </div>
-    
-                <!-- Certificado 5 -->
-                <div class="certificate-card">
-                    <div class="certificate-preview">
-                        <img src="img/certificates/certificado5.png" alt="Certificado React">
-                    </div>
-                    <h3>Certificado Curso De Tecnico en Computadoras</h3>
-                    <p>Tecnico en computadoras </p>
-                    <div class="certificate-date">Emitido: Mayo 2025</div>
-                </div>
-    
-                <!-- Puedes agregar más certificados según necesites -->
-            </div>
+    <section class="portfolio-section scroll-animate">
+        <div class="tabs-container">
+            <button class="tab-button active" data-tab="proyectos" data-translate="projectsTab">Proyectos</button>
+            <button class="tab-button" data-tab="certificados" data-translate="certificatesTab">Certificados</button>
         </div>
 
-  <!-- Contenido de la pestaña CV -->
-   <!-- <div class="tab-content" id="tab-cv">
-        <div class="cv-container">
-            <div class="cv-preview-container">
-                <div class="cv-preview">
-                    <img src="img/cv-preview.jpg" alt="Previsualización de CV">
-                    <div class="cv-overlay">
-                        <a href="" target="_blank" class="view-btn">Ver completo</a>
-                        <a href="" download class="download-btn">
-                            <span class="download-icon">↓</span> Descargar
-                        </a>
-                    </div>
+        <div id="tab-proyectos" class="tab-content active">
+            <h2 class="section-title" data-translate="projectsTitle">Mis Proyectos</h2>
+            <div class="carousel-container">
+                <button class="carousel-button prev">❮</button>
+                <div class="projects-carousel" id="projects-container">
+                    <div class="loading-message">Cargando proyectos...</div>
                 </div>
-                <div class="cv-info">
-                    <h3>Curriculum Vitae</h3>
-                    <p>Documento profesional que resume mi experiencia, educación y habilidades.</p>
-                    <div class="cv-details">
-                        <div class="cv-detail">
-                            <span class="detail-label">Formato:</span>
-                            <span class="detail-value">PDF</span>
-                        </div>
-                        <div class="cv-detail">
-                            <span class="detail-label">Tamaño:</span>
-                            <span class="detail-value">1.2 MB</span>
-                        </div>
-                        <div class="cv-detail">
-                            <span class="detail-label">Actualizado:</span>
-                            <span class="detail-value">Mayo 2024</span>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-button next">❯</button>
             </div>
+            <div class="carousel-dots">
+                </div>
         </div>
-    </div>-->
-</section>
+
+        <div id="tab-certificados" class="tab-content ">
+            <h2 class="section-title" data-translate="certificatesTitle">Mis Certificados</h2>
+            <div class="certificates-grid" id="certificates-container">
+                <div class="certificate-item">
+                        <img src="./img/certificates/certificado1.png" alt="Certificado 1">
+                        <p>Cisco CCST Conceptos basicos de redes</p>
+  
+                </div>
+                <div class="certificate-item">
+                        <img src="./img/certificates/certificado2.png" alt="Certificado 2">
+                        <p>Certificado de Programacion basica en Java</p>
+                </div>
+                <div class="certificate-item">
+                    <img src="./img/certificates/certificado3.png" alt="Certificado 2">
+                    <p>Certificado de Programacion basica en Python</p>
+                </div>
+                <div class="certificate-item">
+                    <img src="./img/certificates/certificado4.png" alt="Certificado 2">
+                    <p>Creacion de Paginas Web</p>
+                </div>
+                <div class="certificate-item">
+                    <img src="./img/certificates/certificado5.png" alt="Certificado 2">
+                    <p>Certificado de Tecnico en Computadoras</p>
+                </div>
+                </div>
+        </div>
+    </section>
 
      
 
@@ -249,26 +194,60 @@
 
 
     <!-- Contact -->
-    <section class="contact-section">
+    <section class="contact-section scroll-animate">
         <h2 data-translate="contactTitle">Contacto</h2>
         <p data-translate="contactText">¿Tienes una idea interesante o un proyecto en mente? Como apasionado del desarrollo, siempre estoy buscando nuevos desafíos y oportunidades para aprender. Hablemos sobre cómo puedo contribuir con mis habilidades técnicas y creatividad.</p>
 
-        <form class="contact-form" id="contact-form" action="https://formspree.io/f/mqaqbroz" method="POST">
-            <label for="name">Nombre completo</label>
-            <input type="text" id="name" name="name" placeholder="Nombre completo" required>
-
-            <label for="email">Correo electrónico</label>
-            <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
-
-            <label for="message">Mensaje</label>
-            <textarea id="message" name="message" rows="5" placeholder="Escribe tu mensaje aquí..." required></textarea>
-
-            <button type="submit">Enviar mensaje</button>
-
-            <p id="success-message" style="display:none; color:limegreen; margin-top:10px;">
-                ¡Mensaje enviado correctamente!
-            </p>
-        </form>
+        <div class="form-card1">
+            <div class="form-card2">
+                <form class="form" id="contactForm">
+                    <p class="form-heading" data-translate="contact_form_heading">Escribeme</p>
+                  
+                    <div class="form-field">
+                        <input required="" placeholder="Nombre y Apellido" class="input-field" type="text" id="contactName" name="name" data-translate-placeholder="contact_form_name_placeholder" />
+                      </div>
+                      
+                      <div class="form-field">
+                        <input
+                          required=""
+                          placeholder="Correo electrónico"
+                          class="input-field"
+                          type="email"
+                          id="contactEmail"
+                          name="email"
+                          data-translate-placeholder="contact_form_email_placeholder"
+                        />
+                      </div>
+                      
+                      <div class="form-field">
+                        <input
+                          required=""
+                          placeholder="Asunto"
+                          class="input-field"
+                          type="text"
+                          id="contactSubject"
+                          name="subject"
+                          data-translate-placeholder="contact_form_subject_placeholder"
+                        />
+                      </div>
+                      
+                      <div class="form-field">
+                        <textarea
+                          required=""
+                          placeholder="Mensaje"
+                          cols="30"
+                          rows="3"
+                          class="input-field"
+                          id="contactMessage"
+                          name="message"
+                          data-translate-placeholder="contact_form_message_placeholder"
+                        ></textarea>
+                      </div>
+                  
+                    <button class="sendMessage-btn" type="submit" data-translate="contact_form_send_button">Enviar mensaje</button>
+                  </form>
+            </div>
+          </div>
     </section>
 
     <!-- Pie de página -->
