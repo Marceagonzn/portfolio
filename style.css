@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&display=swap');
+
 /* Estilos para el selector de idioma */
 .language-selector {
     position: absolute;
@@ -27,12 +29,9 @@
     outline: none;
 }
 
-
-
-
 /* Estilos para el botón de volver arriba */
 #back-to-top {
-    display: none; /* Oculto por defecto */
+    display: none;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -59,9 +58,6 @@
     transform: scale(0.98);
 }
 
-
-
-
 /* Estilos generales */
 ::-webkit-scrollbar {
     display: none;
@@ -73,18 +69,18 @@
     position: fixed;
     z-index: -1;
 }
-/* Estilos generales */
+
 html{
     scroll-behavior: smooth;
 }
+
 body {
-    font-family: 'Courier New', monospace;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     text-align: center;
-    background-color: #0d0000;
+    background-color: #000;
     color: white;
     margin: 0;
     padding: 0;
-
 }
 
 /* Estilo para el logotipo */
@@ -93,32 +89,39 @@ body {
     top: 20px;
     left: 20px;
     opacity: 60%;
-    width: 60px; /* Tamaño del logotipo */
+    width: 60px;
     height: auto;
     cursor: pointer;
-    z-index: 1000; /* Asegura que esté sobre otros elementos */
+    z-index: 1000;
     transition: transform 0.50s;
 }
 
 .logo:hover {
-    transform: scale(1.1); /* Efecto de zoom al pasar el cursor */
+    transform: scale(1.1);
 }
 
+/* Canvas de fondo */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    z-index: -1;
+    pointer-events: none;
+    display: block;
+}
 
-
-
-
-
-/*--------------*/
-/* Estilos para la nueva sección de inicio (hero section) */
+/* ========== HERO SECTION - MEJORADO RESPONSIVE ========== */
 .header-section {
     display: flex;
-    justify-content: space-between; /* Alinea elementos a los extremos */
+    justify-content: space-between;
     align-items: center;
     height: 100vh;
     position: relative;
-    overflow: hidden; /* Asegura que la imagen no se desborde */
-    padding: 0 5%; /* Añade padding horizontal para el contenido */
+    overflow: hidden;
+    padding: 0 5%;
 }
 
 .hero-image-container {
@@ -127,102 +130,90 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('image-rF1bY4r4gAsVhreIbgXdAbzZ95nAy5.jpg'); /* Asegúrate de que esta ruta sea correcta */
+    background-image: url('image-rF1bY4r4gAsVhreIbgXdAbzZ95nAy5.jpg');
     background-size: cover;
     background-position: center;
-    filter: brightness(60%) contrast(120%); /* Ajustes para oscurecer y dar contraste */
-    z-index: 1; /* Para que esté detrás del texto y el icono */
+    filter: brightness(60%) contrast(120%);
+    z-index: 1;
 }
 
 .hero-text-overlay {
-    position: relative; /* Para que esté por encima de la imagen de fondo */
+    position: relative;
     z-index: 2;
-    text-align: left; /* Alinea el texto a la izquierda */
-    color: white; /* Color del texto */
-    max-width: 60%; /* Limita el ancho del texto para que no ocupe toda la pantalla */
-    /* No se usa background-color aquí para una apariencia más limpia sobre la imagen */
+    text-align: left;
+    color: white;
+    max-width: 70%; /* Aumentado para mejor adaptación */
 }
 
 .hero-title {
-    font-family: 'Arial', sans-serif; /* Puedes ajustar la fuente */
-    font-size: clamp(3rem, 8vw, 4rem); /* Tamaño responsivo */
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: clamp(3rem, 8vw, 4rem);
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-
-    /* Animación de escritura para el título */
-    overflow: hidden; /* Oculta el texto hasta que se revele */
-    white-space: nowrap; /* Mantiene el texto en una sola línea */
-    border-right: .15em solid white; /* Simula el cursor */
-    animation:
-        typing 3.5s steps(20, end) forwards, /* Animación de escritura */
-        blink-caret .75s step-end infinite; /* Animación del cursor */
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .15em solid white;
+    animation: typing 3.5s steps(20, end) forwards, blink-caret .75s step-end infinite;
 }
+
 .hero-title .highlight-name {
-    color: #00FF41; /* Un verde vibrante, puedes cambiarlo al color que desees */
-    /* Otros estilos que quieras aplicar, por ejemplo: */
-    /* font-weight: bold; */
-    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); */
+    color: #00FF41;
 }
 
 .hero-subtitle {
-    font-family: 'Arial', sans-serif; /* Puedes ajustar la fuente */
-    font-size: clamp(1rem, 3vw, 1.8rem); /* Tamaño responsivo */
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.8rem);
     line-height: 1.5;
-    max-width: 100%; /* Ocupa el 100% del contenedor hero-text-overlay */
-    margin: 0; /* Elimina márgenes extra */
+    max-width: 100%;
+    margin: 0;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-
-    /* Animación de escritura para el subtítulo */
     overflow: hidden;
     white-space: nowrap;
-    animation:
-        typing-subtitle 5s steps(40, end) 3.5s 1 normal both; /* Retraso de 3.5s para iniciar después del título */
+    animation: typing-subtitle 5s steps(40, end) 3.5s 1 normal both;
 }
 
 .macintosh-icon {
     position: relative;
     z-index: 2;
-    width: 600px;
+    width: min(600px, 45vw); /* Tamaño responsivo */
     height: auto;
-    /* Añadimos la animación de aparición y combinamos con la de flotación */
-    animation: slideInMac 1s ease-out forwards, /* Animación de aparición */
-               float 3s ease-in-out infinite alternate 1s; /* Animación de flotación que comienza 1s después */
-    opacity: 0; /* Asegura que la macintosh esté oculta al inicio */
-    margin-left: auto; /* Empuja el icono hacia la derecha */
+    animation: slideInMac 1s ease-out forwards,
+               float 3s ease-in-out infinite alternate 1s;
+    opacity: 0;
+    margin-left: auto;
 }
 
 .macintosh-icon img {
     width: 100%;
     height: auto;
-    display: block; /* Elimina espacio extra debajo de la imagen */
-}
-
-/* Animación para la aparición de la Macintosh */
-@keyframes slideInMac {
-    from {
-        opacity: 0;
-        transform: translateX(100px) translateY(0px); /* Viene desde la derecha, mantiene la posición Y inicial para flotar */
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0px) translateY(0px); /* Termina en su posición original, la animación 'float' tomará el control */
-    }
+    display: block;
 }
 
 /* Animaciones */
+@keyframes slideInMac {
+    from {
+        opacity: 0;
+        transform: translateX(100px) translateY(0px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px) translateY(0px);
+    }
+}
+
 @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+    from { width: 0; }
+    to { width: 100%; }
 }
 
 @keyframes blink-caret {
-    from, to { border-color: transparent }
+    from, to { border-color: transparent; }
     50% { border-color: white; }
 }
 
 @keyframes typing-subtitle {
-    from { width: 0 }
-    to { width: 100% }
+    from { width: 0; }
+    to { width: 100%; }
 }
 
 @keyframes float {
@@ -231,87 +222,123 @@ body {
     100% { transform: translateY(0px); }
 }
 
-/* Ajustes para dispositivos móviles */
-
-
-/* Animación de entrada para texto en móviles */
 @keyframes slideInFromLeft {
     from {
         opacity: 0;
-        transform: translateX(-50px); /* Viene desde la izquierda */
+        transform: translateX(-50px);
     }
     to {
         opacity: 1;
-        transform: translateX(0); /* Se detiene en su posición original */
+        transform: translateX(0);
     }
 }
 
-/* Ajustes para dispositivos móviles */
+/* ========== MEDIA QUERIES HERO SECTION ========== */
+
+/* Pantallas grandes (mayor a 1400px) - Animación typing activa */
+@media (min-width: 1401px) {
+    .hero-title {
+        animation: typing 3.5s steps(20, end) forwards, blink-caret .75s step-end infinite;
+        white-space: nowrap;
+    }
+    .hero-subtitle {
+        animation: typing-subtitle 5s steps(40, end) 3.5s 1 normal both;
+        white-space: nowrap;
+    }
+}
+
+/* Laptops/Tablets grandes (1101px - 1400px) */
+@media (max-width: 1400px) and (min-width: 1101px) {
+    .hero-title {
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
+        white-space: normal;
+        border-right: none;
+        animation: slideInFromLeft 1s ease-out forwards;
+    }
+    .hero-subtitle {
+        font-size: clamp(1rem, 2.5vw, 1.6rem);
+        white-space: normal;
+        animation: slideInFromLeft 1s ease-out 0.3s forwards;
+    }
+    .hero-text-overlay {
+        max-width: 65%;
+    }
+    .macintosh-icon {
+        width: min(500px, 40vw);
+    }
+}
+
+/* Tablets/Portátiles pequeños (769px - 1100px) */
+@media (max-width: 1100px) {
+    .header-section {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 50px 20px;
+        height: auto;
+        min-height: 100vh;
+    }
+    .hero-text-overlay {
+        max-width: 100%;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    .hero-title {
+        font-size: clamp(2.2rem, 7vw, 3.2rem);
+        white-space: normal;
+        border-right: none;
+        animation: slideInFromLeft 1s ease-out forwards;
+    }
+    .hero-subtitle {
+        font-size: clamp(1rem, 3vw, 1.5rem);
+        white-space: normal;
+        animation: slideInFromLeft 1s ease-out 0.5s forwards;
+    }
+    .macintosh-icon {
+        width: min(400px, 60%);
+        margin: 0 auto;
+        animation: slideInMac 1s ease-out forwards,
+                   float 3s ease-in-out infinite alternate 1s;
+    }
+}
+
+/* Móviles (481px - 768px) */
 @media (max-width: 768px) {
     .header-section {
-        flex-direction: column; /* Apila los elementos en pantallas pequeñas */
-        justify-content: center;
-        align-items: center; /* Centra los elementos */
-        text-align: center;
-        padding: 50px 20px; /* Ajusta padding para móviles, da más espacio vertical */
-        height: auto; /* Permite que la sección se ajuste al contenido */
-        min-height: 100vh; /* Asegura que ocupe al menos la altura de la vista */
+        padding: 40px 15px;
     }
-
-    .hero-text-overlay {
-        max-width: 100%; /* Ocupa todo el ancho disponible */
-        margin-bottom: 30px; /* Espacio entre texto y macintosh */
-        text-align: center; /* Centra el texto en móviles */
-    }
-
     .hero-title {
-        font-size: clamp(2.2rem, 9vw, 3.5rem); /* Ajuste de tamaño de fuente para móviles */
-        white-space: normal; /* Permite que el texto salte de línea */
-        animation: slideInFromLeft 1s ease-out forwards; /* Nueva animación de aparición de izquierda a derecha */
-        border-right: none; /* Quita el cursor titilante */
-        opacity: 0; /* Asegura que esté oculto al inicio antes de la animación */
+        font-size: clamp(2rem, 8vw, 2.8rem);
     }
-
     .hero-subtitle {
-        font-size: clamp(0.9rem, 3.5vw, 1.4rem); /* Ajuste de tamaño de fuente para móviles */
-        white-space: normal; /* Permite que el texto salte de línea */
-        animation: slideInFromLeft 1s ease-out 0.5s forwards; /* Nueva animación con retardo */
-        opacity: 0; /* Asegura que esté oculto al inicio antes de la animación */
+        font-size: clamp(0.9rem, 3.5vw, 1.3rem);
     }
-
     .macintosh-icon {
-        width: 200px; /* Tamaño más pequeño en móviles */
-        margin-left: auto; /* Mantiene centrado en flex-direction: column */
-        margin-right: auto;
-        /* Aseguramos que ambas animaciones se apliquen en móviles */
-        animation: slideInMac 1s ease-out forwards, /* Animación de aparición */
-                   float 3s ease-in-out infinite alternate 1s; /* Animación de flotación con retardo */
-        opacity: 0; /* Asegura que esté oculto al inicio para la animación de aparición */
+        width: 250px;
     }
 }
 
+/* Móviles pequeños (≤480px) */
 @media (max-width: 480px) {
     .hero-title {
-        font-size: clamp(1.8rem, 10vw, 3rem);
+        font-size: clamp(1.8rem, 9vw, 2.5rem);
     }
-
     .hero-subtitle {
         font-size: clamp(0.8rem, 4vw, 1.2rem);
     }
-
     .macintosh-icon {
-        width: 200px; /* Tamaño aún más pequeño */
+        width: 200px;
     }
 }
-/*--------------*/
 
+/* ========== SUBTITLE ========== */
 .subtitle {
-    font-family: Arial, sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 18px;
     margin-top: 20px;
     color: #f0f0f0;
 }
-
 
 /* Icono de scroll */
 .scroll-down {
@@ -327,7 +354,7 @@ body {
     color: #ffffff;
 }
 
-/* Sección de Habilidades - Versión Responsive */
+/* ========== SKILLS SECTION ========== */
 .skills-section {
     padding: 40px 15px;
     text-align: center;
@@ -336,8 +363,8 @@ body {
 }
 
 .skills-title {
-    font-family: 'Arial', sans-serif;
-    font-size: clamp(24px, 5vw, 32px); /* Tamaño responsive */
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    font-size: clamp(24px, 5vw, 32px);
     color: white;
     margin-bottom: 25px;
     position: relative;
@@ -366,8 +393,8 @@ body {
 }
 
 .skill {
-    width: clamp(60px, 15vw, 80px); /* Tamaño responsive */
-    height: clamp(60px, 15vw, 80px); /* Mismo ancho que alto */
+    width: clamp(60px, 15vw, 80px);
+    height: clamp(60px, 15vw, 80px);
     border-radius: 50%;
     background-color: #292929;
     display: flex;
@@ -385,7 +412,6 @@ body {
     background-color: #333;
 }
 
-/* Tooltip mejorado */
 .skill:hover .tooltip {
     opacity: 1;
     visibility: visible;
@@ -403,7 +429,7 @@ body {
     padding: 6px 12px;
     border-radius: 6px;
     font-size: clamp(10px, 2.5vw, 12px);
-    font-family: 'Arial', sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
@@ -412,7 +438,6 @@ body {
     pointer-events: none;
 }
 
-/* Flecha del tooltip */
 .tooltip::after {
     content: '';
     position: absolute;
@@ -435,7 +460,6 @@ body {
     filter: grayscale(0%);
 }
 
-/* Efecto para dispositivos táctiles */
 @media (hover: none) {
     .skill {
         transform: scale(0.95);
@@ -445,13 +469,11 @@ body {
     }
 }
 
-/* Media Queries para diferentes tamaños */
 @media (max-width: 1024px) {
     .skills-section {
         padding: 35px 15px;
         margin: 15px;
     }
-    
     .skills-icons {
         gap: 12px;
     }
@@ -463,16 +485,13 @@ body {
         margin: 10px;
         border-radius: 10px;
     }
-    
     .skills-icons {
         gap: 10px;
     }
-    
     .skill {
         width: 55px;
         height: 55px;
     }
-    
     .tooltip {
         font-size: 10px;
         padding: 5px 8px;
@@ -484,52 +503,44 @@ body {
     .skills-section {
         padding: 25px 5px;
     }
-    
     .skills-title {
         font-size: 22px;
         margin-bottom: 20px;
     }
-    
     .skills-icons {
         gap: 8px;
     }
-    
     .skill {
         width: 50px;
         height: 50px;
     }
-    
     .skill img {
         width: 45%;
     }
-    
     .tooltip {
         bottom: -28px;
     }
 }
 
-/* Para pantallas muy pequeñas */
 @media (max-width: 360px) {
     .skills-icons {
         gap: 6px;
     }
-    
     .skill {
         width: 45px;
         height: 45px;
     }
-    
     .tooltip {
         font-size: 9px;
         bottom: -25px;
     }
 }
-/* Sección About Me */
+
+/* ========== ABOUT SECTION ========== */
 .about-section {
     padding: 40px 200px;
     display: flex;
     flex-wrap: wrap;
-    /*background-color: #121212d3;*/
     color: white;
     align-items: center;
     gap: 20px;
@@ -537,7 +548,7 @@ body {
 
 .about-text {
     flex: 1;
-    font-family: Arial, sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     font-size: 20px;
     line-height: 1.6;
     text-align: left;
@@ -568,7 +579,38 @@ body {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.8);
 }
 
-/* --- Estilos para las nuevas tarjetas de Redes Sociales (Uiverse.io) --- */
+@media (max-width: 1024px) {
+    .about-section {
+        padding: 40px 80px;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 30px 20px;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .about-text {
+        font-size: 16px;
+        padding: 10px;
+        text-align: center;
+    }
+    .about-photo img {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-photo img {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+/* ========== SOCIAL CARDS ========== */
 .social-card {
     height: fit-content;
     width: fit-content;
@@ -576,13 +618,13 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    background: transparent; /* Color de fondo de la tarjeta principal */
+    background: transparent;
     padding: 20px 25px;
     border-radius: 14px;
-    /* Puedes añadir un margin-top si está muy pegado a la foto/texto */
     margin-top: 30px;
-  }
-  .Btn {
+}
+
+.Btn {
     width: 45px;
     height: 45px;
     display: flex;
@@ -594,9 +636,9 @@ body {
     border-radius: 7px;
     cursor: pointer;
     transition: all 0.3s;
-  }
-  
-  .svgContainer {
+}
+
+.svgContainer {
     width: 100%;
     height: 100%;
     display: flex;
@@ -608,9 +650,9 @@ body {
     border-radius: 10px;
     transition: all 0.3s;
     z-index: 2;
-  }
-  
-  .BG {
+}
+
+.BG {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -620,169 +662,276 @@ body {
     pointer-events: none;
     transition: all 0.3s;
     font-size: 0px;
-  }
-  .github .BG {
+}
+
+.github .BG {
     background: #181818;
-  }
-  .instagram .BG {
-    background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);;
-  }
-  .x .BG {
+}
+
+.instagram .BG {
+    background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+}
+
+.x .BG {
     background: #181818;
-  }
-  .Btn:hover .BG {
+}
+
+.Btn:hover .BG {
     transform: scale(1.5);
-    /* transform-origin: bottom; */ /* Si quieres que crezca desde abajo */
-    font-size: 20px; /* Tamaño del texto del botón al hacer hover si hubiera */
+    font-size: 20px;
+}
 
-  }
-  
-  .Btn:hover .svgContainer {
-
+.Btn:hover .svgContainer {
     backdrop-filter: blur(4px);
-  }
-/* Sección de Proyectos */
+}
 
-
-
-
-/* Sección de Contacto */
-/* --- Estilos para el nuevo formulario de Contacto (Uiverse.io) --- */
-/* Revisa también la clase .form, asegúrate que no tenga un max-width o margin que lo desalinee */
-.form {
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    font-family: inherit;
-    gap: 10px;
-    padding-inline: 2em;
-    padding-bottom: 0.4em;
-    background-color: #171717; /* Fondo del formulario interno */
-    border-radius: 20px;
-    /* Quitamos el max-width y margin de aquí, ya que form-card1 lo manejará */
-    /* max-width: 500px; */
-    /* width: 100%; */
-    /* margin: 0 auto; */
-  }
-  
-  .form-heading {
-    text-align: center;
-    margin: 2em;
-    color: #660000; /* Color verde brillante del texto "Get In Touch" */
-    font-size: 1.2em;
-    background-color: transparent;
-    align-self: center;
-  }
-  
-  .form-field {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    border-radius: 10px;
-    padding: 0.6em;
-    border: none;
-    outline: none;
-    color: white;
-    background-color: #171717;
-    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
-  }
-  
-  .input-field {
-    background: none;
-    border: none;
-    outline: none;
-    width: 100%;
-    color: #ccd6f6; /* Color del texto que el usuario escribe */
-    padding-inline: 1em;
-  }
-  
-  /* Estilo para el placeholder del input */
-  .input-field::placeholder {
-    color: #8892b0; /* Un gris más suave para los placeholders */
-    opacity: 1; /* Necesario para Firefox */
-  }
-  .input-field:-ms-input-placeholder { /* Para IE 10-11 */
-    color: #8892b0;
-  }
-  .input-field::-ms-input-placeholder { /* Para Edge */
-    color: #8892b0;
-  }
-  
-  
-  .sendMessage-btn {
-    cursor: pointer;
-    margin-bottom: 3em;
-    padding: 1em;
-    border-radius: 10px;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    color: #660000; /* Color del texto del botón */
-    font-weight: bold;
-    outline: 1px solid #660000; /* Borde del botón */
-    transition: all ease-in-out 0.3s;
-  }
-  
-  .sendMessage-btn:hover {
-    transition: all ease-in-out 0.3s;
-    background-color: #ffff; /* Fondo al pasar el ratón */
-    color: #000; /* Texto al pasar el ratón */
-    cursor: pointer;
-    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
-  }
-  
-  .form-card1 {
-    background-image: linear-gradient(163deg, #f62913 0%, #f62913 100%); /* Borde verde brillante */
-    border-radius: 22px;
-    transition: all 0.3s;
-    /* Nuevas propiedades para controlar el tamaño y centrado del borde */
-    max-width: 500px; /* Igual que el max-width del .form */
-    margin: 0 auto; /* Para centrar el card1 */
-    padding: 2px; /* Pequeño padding para que el gradiente se vea como un borde */
-    box-sizing: border-box; /* Incluye el padding en el ancho/alto */
-  }
-  
-  .form-card1:hover {
-    box-shadow: 0px 0px 30px 1px rgba(255, 105, 100, 0.3);
-  }
-  
-  .form-card2 {
-    /* Asegúrate de que el background-color de form-card2 sea el mismo que el del .form para que el borde se vea */
-    background-color: #171717; /* Debe coincidir con el background-color del .form */
-    border-radius: 20px; /* Ligeramente menor que form-card1 para que el borde se vea */
-    transition: all 0.2s;
-    /* Elimina el padding si lo tenías aquí, lo manejará .form */
-  }
-  
-  .form-card2:hover {
-    transform: scale(0.98);
-    border-radius: 20px;
-  }
-  /* Asegúrate de que la sección de contacto envuelva bien el formulario */
+/* ========== CONTACT SECTION ========== */
 .contact-section {
     padding: 20px;
-    max-width: 600px; /* Puedes ajustar este valor si quieres más espacio alrededor del formulario */
+    max-width: 600px;
     margin: auto;
     box-sizing: border-box;
-    display: flex; /* Para centrar el contenido fácilmente */
-    flex-direction: column; /* Coloca los elementos en columna */
-    align-items: center; /* Centra horizontalmente los elementos */
-    text-align: center; /* Centra el texto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .contact-section p {
-    max-width: 500px; /* O el ancho que desees para el párrafo */
+    max-width: 500px;
 }
 
-/* Pie de página */
+.contact-modern-container {
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-modern-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 3rem;
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 1024px;
+    background: white;
+    box-shadow: 0 2px 10px -3px rgba(6, 81, 237, 0.3);
+    border-radius: 0.375rem;
+}
+
+.contact-info-col {
+    color: #0f172a;
+}
+
+.contact-info-title {
+    font-size: 1.875rem;
+    font-weight: bold;
+    color: #0f172a;
+    margin: 0;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.contact-info-description {
+    font-size: 15px;
+    color: #475569;
+    margin-top: 1rem;
+    line-height: 1.5;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.contact-email-section {
+    margin-top: 3rem;
+}
+
+.contact-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0 0 1rem 0;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.contact-email-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-email-item {
+    display: flex;
+    align-items: center;
+}
+
+.contact-icon-circle {
+    background-color: #e5e7eb;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-email-link {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+}
+
+.contact-email-label {
+    display: block;
+    color: #0f172a;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.contact-email-address {
+    color: #2563eb;
+    font-weight: 500;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.contact-social-section {
+    margin-top: 3rem;
+}
+
+.contact-social-list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+    gap: 1rem;
+}
+
+.contact-social-item {
+    background-color: #e5e7eb;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background-color 0.3s ease;
+}
+
+.contact-social-item:hover {
+    background-color: #d1d5db;
+}
+
+.contact-social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.contact-social-link svg {
+    width: 20px;
+    height: 20px;
+}
+
+.contact-form-col {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.contact-input,
+.contact-textarea {
+    width: 100%;
+    color: #0f172a;
+    border-radius: 0.375rem;
+    padding: 0.625rem 1rem;
+    border: 1px solid #d1d5db;
+    font-size: 0.875rem;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background-color: white;
+}
+
+.contact-input:focus,
+.contact-textarea:focus {
+    border-color: #3b82f6;
+}
+
+.contact-textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-submit-btn {
+    color: white;
+    background-color: #2563eb;
+    border: none;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.625rem 1rem;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s ease;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+.contact-submit-btn:hover {
+    background-color: #1d4ed8;
+}
+
+@media (max-width: 1024px) {
+    .contact-modern-grid {
+        max-width: 672px;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-modern-grid {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        gap: 2rem;
+    }
+    .contact-email-section,
+    .contact-social-section {
+        margin-top: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-modern-container {
+        padding: 0.5rem;
+    }
+    .contact-modern-grid {
+        padding: 1rem;
+        gap: 1.5rem;
+    }
+    .contact-info-title {
+        font-size: 1.5rem;
+    }
+    .contact-info-description {
+        font-size: 14px;
+    }
+    .contact-social-list {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* ========== FOOTER ========== */
 .footer {
     background-color: #0d0d0d;
     color: white;
     text-align: center;
     padding: 10px 20px;
     font-size: 14px;
-    font-family: Arial, sans-serif;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
     margin-top: 40px;
 }
 
@@ -797,14 +946,7 @@ body {
     color: #028a9c;
 }
 
-
-
-
-/* Animaciones */
-
-
-
-
+/* ========== ANIMATIONS ========== */
 @keyframes bounce {
     0%, 100% {
         transform: translateY(0);
@@ -813,192 +955,46 @@ body {
         transform: translateY(10px);
     }
 }
-@media (max-width: 600px) {
-    .contact-section {
-      padding: 15px;
-    }
-  }
 
-/* Responsive general para móviles */
-@media (max-width: 768px) {
-
-    .language-selector {
-        top: 10px;
-        right: 10px;
-    }
-
-    .logo {
-        top: 10px;
-        left: 10px;
-        width: 45px;
-    }
-
-    .ascii-title {
-        font-size: 4px;
-    }
-
-    .subtitle {
-        font-size: 16px;
-        padding: 0 10px;
-    }
-
-    .skills-section {
-        padding: 30px 10px;
-    }
-
-    .skills-title {
-        font-size: 24px;
-    }
-
-    .skills-icons {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .skill {
-        width: 60px;
-        height: 60px;
-    }
-
-    .about-section {
-        padding: 30px 20px;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .about-text {
-        font-size: 16px;
-        padding: 10px;
-    }
-
-    .about-photo img {
-        width: 180px;
-        height: 180px;
-    }
-
-    .contact-section h2 {
-        font-size: 26px;
-    }
-
-    .contact-form {
-        gap: 15px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        padding: 12px;
-        font-size: 15px;
-    }
-
-    .contact-form button {
-        padding: 12px;
-        font-size: 16px;
-    }
-
-    .footer {
-        font-size: 12px;
-        padding: 10px;
-    }
-
-}
-
-/* Extra Small Devices */
-@media (max-width: 480px) {
-    .ascii-title {
-        font-size: 3px;
-    }
-
-    .skills-icons {
-        gap: 10px;
-    }
-
-    .skill {
-        width: 50px;
-        height: 50px;
-    }
-
-    .tooltip {
-        font-size: 10px;
-    }
-
-    .about-photo img {
-        width: 140px;
-        height: 140px;
-    }
-
-    .contact-section h2 {
-        font-size: 26px;
-    }
-
-    .contact-form {
-        gap: 15px;
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        padding: 12px;
-        font-size: 15px;
-    }
-
-    .contact-form button {
-        padding: 12px;
-        font-size: 16px;
-    }
-}
-/* --- Animación de Scroll para Secciones (Fade-Left) --- */
-
-/* Estado inicial de los elementos que se van a animar al hacer scroll */
+/* ========== SCROLL ANIMATION ========== */
 .scroll-animate {
     opacity: 0;
-    transform: translateX(-50px); /* Comienza 50px a la izquierda */
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transición suave */
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Estado final cuando el elemento está visible y se activa la animación */
 .scroll-animate.show-on-scroll {
     opacity: 1;
-    transform: translateX(0); /* Vuelve a su posición original */
+    transform: translateX(0);
 }
 
-/* Puedes añadir un delay si quieres que los elementos dentro de una sección aparezcan secuencialmente */
-/* Ejemplo: si tienes varias cajas dentro de una sección */
-/*
-.scroll-animate.show-on-scroll > * {
-    transition-delay: 0.1s;
-}
-*/
-
-/* Estilos para el Preloader */
-/* Estilos para el Preloader */
+/* ========== PRELOADER ========== */
 #preloader {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #0d0000; /* Color de fondo oscuro */
+    background-color: #0d0000;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 9999; /* Asegura que esté por encima de todo */
-    opacity: 1; /* Debe ser 1 inicialmente */
-    visibility: visible; /* Debe ser visible inicialmente */
-    transition: opacity 0.7s ease-out, visibility 0.7s ease-out; /* Transición suave */
+    z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.7s ease-out, visibility 0.7s ease-out;
 }
 
-/* Clase para ocultar el Preloader */
 #preloader.hidden {
-    opacity: 0; /* Al ocultarse, la opacidad va a 0 */
-    visibility: hidden; /* Y se vuelve invisible */
-    pointer-events: none; /* Permite hacer clic a través del elemento una vez oculto */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
-/* Estilos para el efecto de "terminal" dentro del preloader */
 .terminal-loader {
     border: 0.1em solid #333;
     background-color: #1a1a1a;
-    color: #00FF41; /* Color verde vibrante para el texto del terminal */
+    color: #00FF41;
     font-family: "Courier New", Courier, monospace;
     font-size: 1em;
     padding: 1.5em 1em;
@@ -1006,7 +1002,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     position: relative;
-    overflow: hidden; /* IMPORTANTE para la animación de escritura */
+    overflow: hidden;
     box-sizing: border-box;
 }
 
@@ -1021,9 +1017,9 @@ body {
     border-top-right-radius: 4px;
     padding: 0 0.4em;
     box-sizing: border-box;
-    display: flex; /* Añadir display flex para alinear título y controles */
+    display: flex;
     align-items: center;
-    justify-content: space-between; /* Espacio entre título y controles */
+    justify-content: space-between;
 }
 
 .terminal-title {
@@ -1032,8 +1028,8 @@ body {
 }
 
 .terminal-controls {
-    display: flex; /* Usar flexbox para los controles */
-    gap: 0.4em; /* Espacio entre los controles */
+    display: flex;
+    gap: 0.4em;
 }
 
 .control {
@@ -1055,31 +1051,22 @@ body {
     background-color: #0c0;
 }
 
-/* Estilos para el texto animado "Cargando..." */
 .terminal-loader .text {
-    /* Aquí se controla el efecto de escritura, pero lo haremos con JS. */
-    /* Estas propiedades son para que el texto se comporte como una línea de terminal */
-    white-space: nowrap; /* Mantiene el texto en una sola línea */
-    overflow: hidden; /* Oculta el texto que excede el ancho */
-    margin-top: 1.5em; /* Espacio debajo del header */
-    display: block; /* Asegura que tome su propio espacio */
-    border-right: .15em solid #00FF41; /* Cursor parpadeante */
-    animation: blink-caret .75s step-end infinite; /* Animación de parpadeo */
-    width: 0; /* Ancho inicial 0 para la animación de escritura de JS */
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 1.5em;
+    display: block;
+    border-right: .15em solid #00FF41;
+    animation: blink-caret .75s step-end infinite;
+    width: 0;
 }
 
-/* Las animaciones 'typing' y 'blink-caret' ya están en tu CSS en la sección .hero-title
-   y .hero-subtitle, pero asegúrate de que sean genéricas o si solo las usas para el preloader,
-   podrías moverlas o ajustarlas. Para el preloader, el JavaScript controla el `width` directamente.
-   La animación `blink-caret` debe ser independiente del `typing` si el JS maneja el typing.
-*/
 @keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #00FF41; } /* Color del cursor */
+    from, to { border-color: transparent; }
+    50% { border-color: #00FF41; }
 }
 
-/* ------------------------------------- */
-/* Estilos para la nueva sección de Portafolio (Proyectos y Certificados) */
+/* ========== PORTFOLIO SECTION ========== */
 .portfolio-section {
     padding: 60px 20px;
     color: white;
@@ -1090,14 +1077,15 @@ body {
     color: #00FF41;
     margin-bottom: 40px;
     text-align: center;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-/* Estilos de las pestañas */
 .tabs-container {
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
     padding-bottom: 10px;
+    flex-wrap: wrap;
 }
 
 .tab-button {
@@ -1110,6 +1098,7 @@ body {
     cursor: pointer;
     transition: color 0.3s ease, border-bottom 0.3s ease;
     outline: none;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .tab-button:hover {
@@ -1130,7 +1119,6 @@ body {
     display: block;
 }
 
-/* Estilos para el carrusel de proyectos */
 .carousel-container {
     position: relative;
     width: 90%;
@@ -1138,37 +1126,36 @@ body {
     margin: 0 auto;
     display: flex;
     align-items: center;
-    overflow: hidden; /* Asegura que los proyectos se corten si exceden el contenedor */
+    overflow: hidden;
 }
 
 .projects-carousel {
     display: flex;
-    overflow-x: scroll; /* Permite el desplazamiento horizontal */
-    scroll-snap-type: x mandatory; /* Fuerza el snap a las tarjetas */
-    -webkit-overflow-scrolling: touch; /* Suaviza el scroll en iOS */
-    scroll-behavior: smooth; /* Desplazamiento suave al navegar */
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
     width: 100%;
-    padding: 20px 0; /* Espacio superior e inferior para sombras */
+    padding: 20px 0;
     box-sizing: border-box;
-    /* Ocultar scrollbar */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
 .projects-carousel::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
 }
 
 .project-card {
-    flex: 0 0 auto; /* No crecer, no encoger, base auto */
-    width: calc(33.33% - 40px); /* 3 proyectos por vista con 20px de margen a cada lado */
-    margin: 0 20px; /* Margen a los lados de cada tarjeta */
-    background-color: #2c2c2c; /* Fondo de la tarjeta */
+    flex: 0 0 auto;
+    width: calc(33.33% - 40px);
+    margin: 0 20px;
+    background-color: #2c2c2c;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Sombra intensa */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
     transition: transform 0.3s ease;
-    scroll-snap-align: start; /* Alinea la tarjeta al inicio del scroll */
+    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     text-align: left;
@@ -1180,16 +1167,16 @@ body {
 
 .project-card img {
     width: 100%;
-    height: 200px; /* Altura fija para las imágenes del proyecto */
-    object-fit: cover; /* Recorta la imagen para cubrir el área */
-    border-bottom: 2px solid #00FF41; /* Línea de resaltado */
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #00FF41;
 }
 
 .project-info {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Permite que la info crezca para ocupar el espacio restante */
+    flex-grow: 1;
 }
 
 .project-info h3 {
@@ -1197,6 +1184,7 @@ body {
     color: #00FF41;
     margin-top: 0;
     margin-bottom: 10px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .project-info p {
@@ -1204,13 +1192,15 @@ body {
     color: #e0e0e0;
     line-height: 1.5;
     margin-bottom: 15px;
-    flex-grow: 1; /* Permite que el párrafo crezca */
+    flex-grow: 1;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .project-links {
     display: flex;
     gap: 10px;
-    margin-top: auto; /* Empuja los enlaces al final de la tarjeta */
+    margin-top: auto;
+    flex-wrap: wrap;
 }
 
 .project-links a {
@@ -1223,6 +1213,7 @@ body {
     font-size: 14px;
     font-weight: bold;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .project-links a:hover {
@@ -1230,7 +1221,6 @@ body {
     transform: translateY(-2px);
 }
 
-/* Botones de navegación del carrusel */
 .carousel-button {
     background-color: rgba(0, 0, 0, 0.6);
     color: white;
@@ -1255,19 +1245,19 @@ body {
 }
 
 .carousel-button.prev {
-    left: 0px; /* Ajusta la posición para que esté dentro del carousel-container */
+    left: 0px;
 }
 
 .carousel-button.next {
-    right: 0px; /* Ajusta la posición para que esté dentro del carousel-container */
+    right: 0px;
 }
 
-/* Puntos de navegación del carrusel */
 .carousel-dots {
     display: flex;
     justify-content: center;
     margin-top: 30px;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .carousel-dot {
@@ -1284,31 +1274,32 @@ body {
     transform: scale(1.2);
 }
 
-/* Mensaje de carga para proyectos */
 .loading-message, .error-message {
     text-align: center;
     color: #aaa;
     font-size: 18px;
     padding: 50px;
-    width: 100%; /* Asegura que ocupe el ancho completo del carrusel */
+    width: 100%;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 .error-message {
     color: #e33;
 }
+
 .error-message a {
     color: #00FF41;
     text-decoration: none;
 }
+
 .error-message a:hover {
     text-decoration: underline;
 }
 
-/* Estilos para la cuadrícula de certificados */
 .certificates-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Columnas responsivas */
-    gap: 30px; /* Espacio entre certificados */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -1334,12 +1325,12 @@ body {
     color: inherit;
     display: flex;
     flex-direction: column;
-    height: 100%; /* Asegura que el enlace ocupe toda la tarjeta */
+    height: 100%;
 }
 
 .certificate-item img {
     width: 100%;
-    height: 200px; /* Altura fija para las imágenes */
+    height: 200px;
     object-fit: cover;
     border-bottom: 2px solid #00FF41;
 }
@@ -1349,16 +1340,16 @@ body {
     color: #e0e0e0;
     padding: 15px;
     margin: 0;
-    flex-grow: 1; /* Permite que el texto crezca */
+    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
-/* Media Queries para la sección de Portafolio */
 @media (max-width: 1024px) {
     .project-card {
-        width: calc(50% - 30px); /* 2 proyectos por vista */
+        width: calc(50% - 30px);
         margin: 0 15px;
     }
     .carousel-button.prev { left: 10px; }
@@ -1375,7 +1366,7 @@ body {
         font-size: 18px;
     }
     .project-card {
-        width: calc(100% - 20px); /* 1 proyecto por vista en móviles */
+        width: calc(100% - 20px);
         margin: 0 20px;
     }
     .carousel-button {
@@ -1384,7 +1375,7 @@ body {
         font-size: 20px;
     }
     .certificates-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajuste para móviles */
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
         gap: 20px;
         padding: 15px;
     }
@@ -1395,6 +1386,7 @@ body {
         font-size: 14px;
     }
 }
+
 @media (max-width: 480px) {
     .portfolio-section {
         padding: 40px 10px;
@@ -1408,15 +1400,15 @@ body {
         padding: 10px;
     }
     .project-card {
-        width: calc(100% - 10px); /* Ajuste final para móviles muy pequeños */
+        width: calc(100% - 10px);
         margin: 0 10px;
     }
     .project-card img {
-        max-width: 100%; /* La imagen nunca será más grande que su contenedor padre */
-        height: auto;    /* Mantiene la proporción de la imagen */
-        display: block;  /* Ayuda a eliminar espacios extra y a que max-width funcione bien */
-        object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión, recortando si es necesario */
-        border-radius: 8px; /* Si tienes border-radius en la tarjeta, también en la imagen */
+        max-width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+        border-radius: 8px;
     }
     .carousel-button {
         width: 35px;
@@ -1432,3 +1424,40 @@ body {
     }
 }
 
+/* ========== RESPONSIVE GENERAL ========== */
+@media (max-width: 768px) {
+    .language-selector {
+        top: 10px;
+        right: 10px;
+    }
+    .logo {
+        top: 10px;
+        left: 10px;
+        width: 45px;
+    }
+    .ascii-title {
+        font-size: 4px;
+    }
+    .subtitle {
+        font-size: 16px;
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .contact-section {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ascii-title {
+        font-size: 3px;
+    }
+    .skills-icons {
+        gap: 10px;
+    }
+    .tooltip {
+        font-size: 10px;
+    }
+}
