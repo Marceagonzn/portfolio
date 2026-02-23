@@ -1,4 +1,4 @@
-// Asegúrate de que TODO tu código JavaScript esté dentro de este único 'DOMContentLoaded'
+// script.js completo con todas las traducciones
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Animación de Scroll para Secciones ---
@@ -6,76 +6,64 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Opciones para el Intersection Observer
     const observerOptions = {
-        root: null, /* Observa el viewport */
-        rootMargin: '0px', /* No añade margen extra al viewport */
-        threshold: 0.1 /* Un 10% del elemento debe ser visible para activar la animación */
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
     };
 
     // Callback que se ejecuta cuando un elemento cruza el umbral
     const observerCallback = (entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Si el elemento está visible, añade la clase para activar la animación
                 entry.target.classList.add('show-on-scroll');
-                // Deja de observar el elemento una vez que se ha animado
                 observer.unobserve(entry.target);
             }
         });
     };
 
-    // Crea una nueva instancia de Intersection Observer
     const observer = new IntersectionObserver(observerCallback, observerOptions);
 
     sectionsToAnimate.forEach(section => {
-        // Observa el elemento para animaciones al hacer scroll
         observer.observe(section);
 
-        // Además, verifica si el elemento ya está en el viewport al cargar la página
-        // y anima esos elementos inmediatamente.
         const rect = section.getBoundingClientRect();
         const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-        
-        // Si el elemento está al menos parcialmente visible en el viewport inicial
+
         if (rect.top < viewportHeight && rect.bottom > 0) {
             section.classList.add('show-on-scroll');
-            // Deja de observarlo ya que ya está animado (esto lo había olvidado en la revisión anterior)
-            observer.unobserve(section); 
+            observer.unobserve(section);
         }
     });
 
-    // --- Script para el envío del formulario a Formspree usando Fetch (AJAX) ---
-    const form = document.getElementById('contactForm'); // Asegúrate de que este ID coincida con tu formulario
-    
-    // Solo si el formulario existe
+    // --- Script para el envío del formulario a Formspree ---
+    const form = document.getElementById('contactForm');
+
     if (form) {
-        form.addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevenir el envío de formulario por defecto
+        form.addEventListener('submit', async function (event) {
+            event.preventDefault();
 
             const formData = new FormData(form);
             const object = {};
             formData.forEach((value, key) => {
-                // Asegúrate de que los campos tengan un atributo 'name' para que FormData los capture
                 object[key] = value;
             });
             const json = JSON.stringify(object);
 
             try {
-                const response = await fetch('https://formspree.io/f/mqaqbroz', { // Tu URL de Formspree
+                const response = await fetch('https://formspree.io/f/mqaqbroz', {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json', // Esto le dice a Formspree que estamos enviando JSON
-                        'Accept': 'application/json' // Opcional, pero buena práctica
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     },
-                    body: json // Aquí enviamos los datos como JSON
+                    body: json
                 });
 
                 if (response.ok) {
-                    // Éxito:
                     console.log('¡Mensaje enviado correctamente!');
-                    alert('¡Mensaje enviado correctamente!'); // Puedes cambiar esto por un mensaje en pantalla
-                    form.reset(); // Limpia los campos del formulario
+                    alert('¡Mensaje enviado correctamente!');
+                    form.reset();
                 } else {
-                    // Error en la respuesta de Formspree
                     const data = await response.json();
                     let errorMessageText = 'Hubo un error al enviar tu mensaje.';
                     if (data && data.errors) {
@@ -84,40 +72,34 @@ document.addEventListener('DOMContentLoaded', () => {
                         errorMessageText += ' Error: ' + data.error;
                     }
                     console.error(errorMessageText);
-                    alert(errorMessageText); // O mostrar en pantalla
+                    alert(errorMessageText);
                 }
             } catch (error) {
-                // Error de red
                 console.error('Error al enviar el formulario:', error);
                 alert('No se pudo conectar con el servidor. Inténtalo de nuevo más tarde.');
             }
         });
     }
 
-
     // --- Lógica de la pantalla de carga (Preloader) ---
     const preloader = document.getElementById('preloader');
     const terminalText = preloader ? preloader.querySelector('.terminal-loader .text') : null;
 
-    // Función para ocultar el preloader
     function hidePreloader() {
         if (preloader) {
-            preloader.classList.add('hidden'); // Añade la clase 'hidden' para desvanecerlo
-            // Opcional: Eliminar el preloader del DOM después de la transición
+            preloader.classList.add('hidden');
             preloader.addEventListener('transitionend', () => {
-                preloader.remove(); // Remueve el elemento del DOM una vez que se desvanece
-            });
+                preloader.remove();
+            }, { once: true });
         }
-        // Asegúrate de que el body no tenga overflow: hidden si lo usaste para el preloader
         document.body.style.overflow = '';
     }
 
     if (terminalText) {
-        // Simular un retardo si el texto es muy corto para la animación
         const textContent = terminalText.textContent;
-        terminalText.textContent = ''; // Limpiar el texto para la animación
+        terminalText.textContent = '';
         let i = 0;
-        const speed = 70; // Velocidad de escritura en ms
+        const speed = 70;
 
         function typeWriter() {
             if (i < textContent.length) {
@@ -125,72 +107,182 @@ document.addEventListener('DOMContentLoaded', () => {
                 i++;
                 setTimeout(typeWriter, speed);
             } else {
-                // Una vez que el texto se ha escrito, esperar un momento antes de ocultar
-                // Llama a hidePreloader cuando la animación de escritura termine
-                setTimeout(hidePreloader, 500); 
+                setTimeout(hidePreloader, 500);
             }
         }
-        // Inicia la animación de escritura
         typeWriter();
 
-        // Asegurarse de que el preloader se oculte si el 'load' ya se disparó o si hay un fallo
-        // Esto previene que se quede cargando si la animación de escritura no se dispara por alguna razón.
         if (document.readyState === 'complete') {
             hidePreloader();
         } else {
             window.addEventListener('load', hidePreloader);
-            // Fallback por si la carga o la animación tardan demasiado
             setTimeout(() => {
                 hidePreloader();
-            }, 8000); // Ocultar después de 8 segundos como máximo
+            }, 8000);
         }
 
     } else {
-        // Si no hay terminalText, oculta el preloader sin animación de escritura
-        // Esto se ejecutará si el preloader no tiene la estructura esperada
         if (document.readyState === 'complete') {
             hidePreloader();
         } else {
             window.addEventListener('load', hidePreloader);
-            // Fallback general por si la carga tarda demasiado
             setTimeout(() => {
                 hidePreloader();
-            }, 5000); 
+            }, 5000);
         }
     }
 
-
-    // --- Textos en diferentes idiomas ---
+    // --- Textos en diferentes idiomas (COMPLETO) ---
     const translations = {
         es: {
+            // Header
             title: "Portafolio de Marcelo González",
             titleName: "¡Hola! Soy <span class=\"highlight-name\">&lt;Marcelo González/&gt;</span>",
             subtitle: "Soy estudiante de ingeniería informática y desarrollador de software",
+
+            // Skills (se mantiene igual)
             skillsTitle: "Habilidades en aprendizaje",
-            aboutMeTitle: "Sobre mí",
-            aboutMeText: "¡Hola! Soy un apasionado estudiante de Ingeniería en Computación con interés en el desarrollo de aplicaciones web y móviles. Me encanta aprender nuevas tecnologías y aplicar mis conocimientos en proyectos reales. Mi objetivo es convertirme en un desarrollador profesional que pueda brindar soluciones creativas e innovadoras.",
-            contactTitle: "Contacto",
-            contactText: "¿Tienes una idea interesante o un proyecto en mente? Como apasionado del desarrollo, siempre estoy buscando nuevos desafíos y oportunidades para aprender. Hablemos sobre cómo puedo contribuir con mis habilidades técnicas y creatividad.",
-            footerText: "Diseño realizado por <a href='https://github.com/Marceagonzn' target='_blank'>Marcelo González</a>",
-            projectsTab: "Proyectos", /* Nuevo */
-            certificatesTab: "Certificados", /* Nuevo */
-            projectsTitle: "Mis Proyectos", /* Nuevo */
-            certificatesTitle: "Mis Certificados" /* Nuevo */
+            // En el objeto 'es' (español) - AÑADE ESTO:
+            skillsMainTitle: "Habilidades en Proceso",
+            skillsDescription: "Dominando las tecnologías de apps modernas y la programación de sistemas. Este tablero sigue mi crecimiento técnico real.",
+            categoryTitle: "Tecnologías que Domino",
+            intermediateLevel: "Intermedio",
+            activeBadge: "Activo",
+            mainFocus: "Enfoque Principal",
+            proficiencyLabel: "Competencia",
+            jsTitle: "JavaScript (ES6+)",
+            jsDesc: "Async, Manipulación DOM y APIs",
+            reactNativeTitle: "React Native",
+            reactNativeDesc: "Apps Móviles, Expo y Navegación",
+            javaTitle: "Java",
+            javaDesc: "POO, Spring Boot y Microservicios",
+            pythonTitle: "Python",
+            pythonDesc: "Automatización, Scripts y Análisis de Datos",
+            cppTitle: "C++",
+            cppDesc: "Gestión de Memoria, Algoritmos y POO",
+
+            // About Me - NUEVAS TRADUCCIONES
+            aboutTagline: "Sobre Mí",
+            aboutTitle: "Creando experiencias digitales fluidas a través del <span class=\"about-title-highlight\">código</span> y el diseño.",
+            aboutText1: "Soy desarrollador mobile y web enfocado en construir aplicaciones funcionales, escalables y centradas en el usuario.",
+            aboutText2: "Me especializo en la intersección entre UI/UX e ingeniería, combinando diseño intuitivo con soluciones técnicas sólidas.",
+            aboutText3: "Actualmente profundizo en React y React Native para desarrollar aplicaciones cross-platform de alto rendimiento, manteniendo una mentalidad de mejora continua y crecimiento profesional.",
+            socialMedia: "Redes Sociales",
+            openToOpportunities: "Abierto a nuevas oportunidades",
+            focusArea: "Área de Enfoque",
+            focusTitle: "Software Developer",
+            yearsExperience: "Años de Experiencia",
+            projectsCompleted: "Proyectos Completados",
+            certifications: "Certificaciones",
+            commitment: "Compromiso",
+
+            // Portfolio - NUEVAS TRADUCCIONES
+            portfolioTagline: "Portfolio & Logros",
+            portfolioTitle: "Explorando mi <span class=\"portfolio-title-highlight\">trayectoria</span> técnica",
+            portfolioDescription: "Proyectos destacados que demuestran mi pasión por el desarrollo de software y la creación de soluciones innovadoras.",
+
+            // Contact - NUEVAS TRADUCCIONES
+            contactTagline: "Contacto",
+            contactTitle: "<strong>Colabora</strong> conmigo",
+            contactDescription: "Transformemos tus ideas en realidad. Estoy a un mensaje de distancia para crear algo extraordinario juntos.",
+            contactInfoTitle: "<span>Información</span> de contacto",
+            contactInfoText: "Puedes contactarme directamente a través de estos canales o mediante el formulario. Respondo en menos de 24 horas.",
+            responseTime: "< 24 horas",
+            location: "Paraguay",
+            formTitle: "Envíame un <span>mensaje</span>",
+            nameLabel: "Nombre",
+            emailLabel: "Email",
+            messageLabel: "Mensaje",
+            sendMessage: "Enviar mensaje",
+
+            // Footer - COMPLETO
+            footerText: "Diseño y desarrollo realizado por <a href='https://github.com/Marceagonzn' target='_blank'>Marcelo González</a>",
+            footerDescription: "Desarrollador de software apasionado por crear experiencias digitales únicas y funcionales. Especializado en aplicaciones web y móviles.",
+            availableForWork: "Disponible para trabajar",
+            quickLinks: "Enlaces Rápidos",
+            aboutLink: "Sobre mí",
+            projectsLink: "Proyectos",
+            skillsLink: "Habilidades",
+            contactLink: "Contacto",
+            contactInfo: "Contacto",
+            footerCopyright: "© 2024 <a href=\"https://github.com/Marceagonzn\" target=\"_blank\">Marcelo González</a>. Todos los derechos reservados.",
+            privacyPolicy: "Política de Privacidad",
+            termsOfUse: "Términos de Uso"
         },
         en: {
+            // Header
             title: "Marcelo González's Portfolio",
             titleName: "Hello! I'm <span class=\"highlight-name\">&lt;Marcelo González/&gt;</span>",
             subtitle: "I'm an informatic engineering student and software developer",
+
+            // Skills
             skillsTitle: "Learning skills",
-            aboutMeTitle: "About me",
-            aboutMeText: "Hello! I am a passionate Computer Engineering student with interest in the development of web and mobile applications. I love learning new technologies and applying my knowledge in real projects. My goal is to become a professional developer who can provide creative and innovative solutions.",
-            contactTitle: "Contact",
-            contactText: "Do you have an interesting idea or a project in mind? As a passionate developer, I'm always looking for new challenges and opportunities to learn. Let's talk about how I can contribute with my technical skills and creativity.",
-            footerText: "Design made by <a href='https://github.com/Marceagonzn' target='_blank'>Marcelo González</a>",
-            projectsTab: "Projects", /* Nuevo */
-            certificatesTab: "Certificates", /* Nuevo */
-            projectsTitle: "My Projects", /* Nuevo */
-            certificatesTitle: "My Certificates" /* Nuevo */
+            // En el objeto 'en' (inglés) - AÑADE ESTO:
+            skillsMainTitle: "Skills in Progress",
+            skillsDescription: "Mastering modern app technologies and systems programming. This dashboard tracks my real-time technical growth.",
+            categoryTitle: "Technologies I Master",
+            intermediateLevel: "Intermediate",
+            activeBadge: "Active",
+            mainFocus: "Main Focus",
+            proficiencyLabel: "Proficiency",
+            jsTitle: "JavaScript (ES6+)",
+            jsDesc: "Async, DOM Manipulation & APIs",
+            reactNativeTitle: "React Native",
+            reactNativeDesc: "Mobile Apps, Expo & Navigation",
+            javaTitle: "Java",
+            javaDesc: "OOP, Spring Boot & Microservices",
+            pythonTitle: "Python",
+            pythonDesc: "Automation, Scripts & Data Analysis",
+            cppTitle: "C++",
+            cppDesc: "Memory Management, Algorithms & OOP",
+
+            // About Me - NEW TRANSLATIONS
+            aboutTagline: "About Me",
+            aboutTitle: "Crafting seamless digital experiences through <span class=\"about-title-highlight\">code</span> and design.",
+            aboutText1: "I am a mobile and web developer focused on building functional, scalable, and user-centered applications.",
+            aboutText2: "I specialize at the intersection of UI/UX and engineering, combining intuitive design with solid technical solutions.",
+            aboutText3: "I'm currently deepening my knowledge in React and React Native to develop high-performance cross-platform applications, maintaining a mindset of continuous improvement and professional growth.",
+            socialMedia: "Social Media",
+            openToOpportunities: "Open to new opportunities",
+            focusArea: "Focus Area",
+            focusTitle: "Software Developer",
+            yearsExperience: "Years Experience",
+            projectsCompleted: "Projects Completed",
+            certifications: "Certifications",
+            commitment: "Commitment",
+
+            // Portfolio - NEW TRANSLATIONS
+            portfolioTagline: "Portfolio & Achievements",
+            portfolioTitle: "Exploring my technical <span class=\"portfolio-title-highlight\">journey</span>",
+            portfolioDescription: "Featured projects that demonstrate my passion for software development and creating innovative solutions.",
+
+            // Contact - NEW TRANSLATIONS
+            contactTagline: "Contact",
+            contactTitle: "<strong>Collaborate</strong> with me",
+            contactDescription: "Let's turn your ideas into reality. I'm just a message away from creating something extraordinary together.",
+            contactInfoTitle: "<span>Contact</span> information",
+            contactInfoText: "You can contact me directly through these channels or via the form. I respond within 24 hours.",
+            responseTime: "< 24 hours",
+            location: "Paraguay",
+            formTitle: "Send me a <span>message</span>",
+            nameLabel: "Name",
+            emailLabel: "Email",
+            messageLabel: "Message",
+            sendMessage: "Send message",
+
+            // Footer - COMPLETE
+            footerText: "Design and development by <a href='https://github.com/Marceagonzn' target='_blank'>Marcelo González</a>",
+            footerDescription: "Software developer passionate about creating unique and functional digital experiences. Specialized in web and mobile applications.",
+            availableForWork: "Available for work",
+            quickLinks: "Quick Links",
+            aboutLink: "About me",
+            projectsLink: "Projects",
+            skillsLink: "Skills",
+            contactLink: "Contact",
+            contactInfo: "Contact Info",
+            footerCopyright: "© 2024 <a href=\"https://github.com/Marceagonzn\" target=\"_blank\">Marcelo González</a>. All rights reserved.",
+            privacyPolicy: "Privacy Policy",
+            termsOfUse: "Terms of Use"
         }
     };
 
@@ -204,31 +296,40 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    
 
-    // Evento para cambiar el idioma cuando se selecciona una opción
-    const languageSelect = document.getElementById('language-select');
-    if (languageSelect) { // Asegurarse de que el selector exista
-        languageSelect.addEventListener('change', function() {
-            const selectedLanguage = this.value;
-            changeLanguage(selectedLanguage);
-        });
+    // --- Cambio de idioma con botones de banderas ---
+    const langEs = document.getElementById('lang-es');
+    const langEn = document.getElementById('lang-en');
+
+    function setActiveLanguage(lang) {
+        // Actualizar clases activas
+        if (lang === 'es') {
+            langEs.classList.add('active');
+            langEn.classList.remove('active');
+        } else {
+            langEn.classList.add('active');
+            langEs.classList.remove('active');
+        }
+
+        // Cambiar el idioma
+        changeLanguage(lang);
     }
 
-    // Establecer el idioma inicial (español por defecto)
+    if (langEs && langEn) {
+        langEs.addEventListener('click', () => setActiveLanguage('es'));
+        langEn.addEventListener('click', () => setActiveLanguage('en'));
+    }
+
+    // Establecer idioma inicial (español por defecto)
+    setActiveLanguage('es');
+
+    // Establecer el idioma inicial
     changeLanguage('es');
 
-
-    // --- Mostrar u ocultar el botón de volver arriba ---
-    // Mantenemos la función de scroll global para el evento window.onscroll
-    // Si la pones dentro de DOMContentLoaded, window.onscroll no la encontrará.
-    // O puedes usar addEventListener en window si quieres encapsularla.
-    // Para simplificar, la dejaré como estaba, pero ten en cuenta este detalle.
-    // **Nota:** Lo más limpio sería:
-    // window.addEventListener('scroll', scrollFunction);
-    // document.getElementById("back-to-top").addEventListener('click', function() { ... });
-
+    // --- Botón de volver arriba ---
     const backToTopButton = document.getElementById("back-to-top");
-    if (backToTopButton) { // Solo si el botón existe
+    if (backToTopButton) {
         window.addEventListener('scroll', () => {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                 backToTopButton.style.display = "block";
@@ -237,10 +338,84 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Función para volver al principio de la página
         backToTopButton.addEventListener('click', () => {
-            document.body.scrollTop = 0; // Para Safari
-            document.documentElement.scrollTop = 0; // Para Chrome, Firefox, IE y Opera
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
         });
     }
+
+        // --- Animación WAVE para el título ---
+    function applyWaveAnimation() {
+        const heroTitle = document.querySelector('.hero-title');
+        if (!heroTitle) return;
+        
+        // Obtener el HTML original respetando el span .highlight-name
+        const originalHTML = heroTitle.innerHTML;
+        
+        // Crear un contenedor temporal para procesar
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = originalHTML;
+        
+        // Función para procesar nodos de texto y convertirlos en spans
+        function processNode(node) {
+            if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
+                const text = node.textContent;
+                const fragment = document.createDocumentFragment();
+                
+                for (let i = 0; i < text.length; i++) {
+                    const char = text.charAt(i);
+                    if (char === ' ') {
+                        // Para espacios, añadir un espacio normal
+                        fragment.appendChild(document.createTextNode(' '));
+                    } else {
+                        const span = document.createElement('span');
+                        span.className = 'wave-char';
+                        span.textContent = char;
+                        fragment.appendChild(span);
+                    }
+                }
+                return fragment;
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                // Si es un elemento (como el span .highlight-name), procesar sus hijos
+                if (node.classList && node.classList.contains('highlight-name')) {
+                    node.classList.add('wave-text');
+                }
+                
+                // Procesar cada hijo
+                const children = Array.from(node.childNodes);
+                children.forEach(child => {
+                    const processed = processNode(child);
+                    if (processed) {
+                        node.replaceChild(processed, child);
+                    }
+                });
+            }
+            return null;
+        }
+        
+        // Procesar el contenido
+        const children = Array.from(tempDiv.childNodes);
+        children.forEach(child => {
+            const processed = processNode(child);
+            if (processed) {
+                tempDiv.replaceChild(processed, child);
+            }
+        });
+        
+        // Actualizar el HTML
+        heroTitle.innerHTML = tempDiv.innerHTML;
+    }
+    
+    // Aplicar la animación después de que cambie el idioma
+    applyWaveAnimation();
+    
+    // Re-aplicar cuando cambie el idioma
+    const languageSelect = document.getElementById('language-select');
+    if (languageSelect) {
+        languageSelect.addEventListener('change', function() {
+            // Pequeño retraso para que el DOM se actualice
+            setTimeout(applyWaveAnimation, 50);
+        });
+    }
+
 });
