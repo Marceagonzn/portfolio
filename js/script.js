@@ -560,5 +560,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
         observer.observe(statsSection);
     }
+    
+    // --- Animación parallax con fade ---
+function handleParallaxScroll() {
+    const sections = document.querySelectorAll('section');
+    const scrollPosition = window.scrollY;
+    const windowHeight = window.innerHeight;
+    
+    sections.forEach((section, index) => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        
+        // Determinar si la sección está visible
+        const isVisible = (scrollPosition + windowHeight > sectionTop) && 
+                          (scrollPosition < sectionBottom);
+        
+        if (isVisible) {
+            // Calcular progreso de visibilidad
+            const visibleProgress = Math.min(
+                1,
+                (scrollPosition + windowHeight - sectionTop) / (windowHeight * 0.5)
+            );
+            
+            // Dirección del parallax (alternar entre secciones)
+            const direction = index % 2 === 0 ? -1 : 1;
+            
+            // Aplicar transformación suave
+            section.style.opacity = Math.min(1, visibleProgress);
+            section.style.transform = `translateY(${direction * (1 - visibleProgress) * 50}px) scale(${0.95 + (visibleProgress * 0.05)})`;
+            
+            section.classList.add('visible');
+        } else if (scrollPosition > sectionBottom) {
+            // Sección pasada - desvanecer hacia arriba
+            section.style.opacity = '0.2';
+            section.style.transform = 'translateY(-30px) scale(0.9)';
+            section.classList.remove('visible');
+        } else if (scrollPosition + windowHeight < sectionTop) {
+            // Sección por venir - desvanecer hacia abajo
+            section.style.opacity = '0.2';
+            section.style.transform = 'translateY(30px) scale(0.9)';
+            section.classList.remove('visible');
+        }
+    });
+}
+
+// Aplicar estilos iniciales
+document.querySelectorAll('section').forEach(section => {
+    section.style.transition = 'all 0.6s cubic-bezier(0.33, 1, 0.68, 1)';
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(50px) scale(0.95)';
+});
+
+// Ejecutar al hacer scroll
+window.addEventListener('scroll', handleParallaxScroll);
+window.addEventListener('resize', handleParallaxScroll);
+setTimeout(handleParallaxScroll, 100); // Ejecutar después de un breve retraso
 
 });

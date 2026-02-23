@@ -3069,3 +3069,24 @@ canvas {
         font-size: 10px;
     }
 }
+
+/* ========== ANIMACIÓN PARALLAX CON FADE ========== */
+.parallax-section {
+    transition: all 0.6s cubic-bezier(0.33, 1, 0.68, 1);
+    will-change: transform, opacity;
+}
+
+.parallax-section.fade-up {
+    opacity: 0;
+    transform: translateY(100px) scale(0.95);
+}
+
+.parallax-section.fade-down {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.95);
+}
+
+.parallax-section.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
