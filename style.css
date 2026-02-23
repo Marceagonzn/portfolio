@@ -269,6 +269,7 @@ canvas {
 }
 
 /* Retrasos escalonados para las letras */
+/* Amplía los delays hasta 30 para cubrir textos más largos */
 .wave-char:nth-child(1) { animation-delay: 0s; }
 .wave-char:nth-child(2) { animation-delay: 0.1s; }
 .wave-char:nth-child(3) { animation-delay: 0.2s; }
@@ -289,6 +290,16 @@ canvas {
 .wave-char:nth-child(18) { animation-delay: 1.7s; }
 .wave-char:nth-child(19) { animation-delay: 1.8s; }
 .wave-char:nth-child(20) { animation-delay: 1.9s; }
+.wave-char:nth-child(21) { animation-delay: 2s; }
+.wave-char:nth-child(22) { animation-delay: 2.1s; }
+.wave-char:nth-child(23) { animation-delay: 2.2s; }
+.wave-char:nth-child(24) { animation-delay: 2.3s; }
+.wave-char:nth-child(25) { animation-delay: 2.4s; }
+.wave-char:nth-child(26) { animation-delay: 2.5s; }
+.wave-char:nth-child(27) { animation-delay: 2.6s; }
+.wave-char:nth-child(28) { animation-delay: 2.7s; }
+.wave-char:nth-child(29) { animation-delay: 2.8s; }
+.wave-char:nth-child(30) { animation-delay: 2.9s; }
 
 /* Animación wave */
 @keyframes wave {

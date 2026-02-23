@@ -194,6 +194,41 @@ document.addEventListener('DOMContentLoaded', () => {
             emailLabel: "Email",
             messageLabel: "Mensaje",
             sendMessage: "Enviar mensaje",
+            // En el objeto 'es' (español):
+            titleName: `<span class="wave-text">
+                <span class="wave-char">¡</span>
+                <span class="wave-char">H</span>
+                <span class="wave-char">o</span>
+                <span class="wave-char">l</span>
+                <span class="wave-char">a</span>
+                <span class="wave-char">!</span>
+                <span class="wave-char"> </span>
+                <span class="wave-char">S</span>
+                <span class="wave-char">o</span>
+                <span class="wave-char">y</span>
+                <span class="wave-char"> </span>
+            </span>
+            <span class="highlight-name wave-text">
+                <span class="wave-char">&lt;</span>
+                <span class="wave-char">M</span>
+                <span class="wave-char">a</span>
+                <span class="wave-char">r</span>
+                <span class="wave-char">c</span>
+                <span class="wave-char">e</span>
+                <span class="wave-char">l</span>
+                <span class="wave-char">o</span>
+                <span class="wave-char"> </span>
+                <span class="wave-char">G</span>
+                <span class="wave-char">o</span>
+                <span class="wave-char">n</span>
+                <span class="wave-char">z</span>
+                <span class="wave-char">á</span>
+                <span class="wave-char">l</span>
+                <span class="wave-char">e</span>
+                <span class="wave-char">z</span>
+                <span class="wave-char">/</span>
+                <span class="wave-char">&gt;</span>
+            </span>`,
 
             // Footer - COMPLETO
             footerText: "Diseño y desarrollo realizado por <a href='https://github.com/Marceagonzn' target='_blank'>Marcelo González</a>",
@@ -270,6 +305,41 @@ document.addEventListener('DOMContentLoaded', () => {
             messageLabel: "Message",
             sendMessage: "Send message",
 
+            titleName: `<span class="wave-text">
+            <span class="wave-char">H</span>
+            <span class="wave-char">e</span>
+            <span class="wave-char">l</span>
+            <span class="wave-char">l</span>
+            <span class="wave-char">o</span>
+            <span class="wave-char">!</span>
+            <span class="wave-char"> </span>
+            <span class="wave-char">I</span>
+            <span class="wave-char">'</span>
+            <span class="wave-char">m</span>
+            <span class="wave-char"> </span>
+        </span>
+        <span class="highlight-name wave-text">
+            <span class="wave-char">&lt;</span>
+            <span class="wave-char">M</span>
+            <span class="wave-char">a</span>
+            <span class="wave-char">r</span>
+            <span class="wave-char">c</span>
+            <span class="wave-char">e</span>
+            <span class="wave-char">l</span>
+            <span class="wave-char">o</span>
+            <span class="wave-char"> </span>
+            <span class="wave-char">G</span>
+            <span class="wave-char">o</span>
+            <span class="wave-char">n</span>
+            <span class="wave-char">z</span>
+            <span class="wave-char">á</span>
+            <span class="wave-char">l</span>
+            <span class="wave-char">e</span>
+            <span class="wave-char">z</span>
+            <span class="wave-char">/</span>
+            <span class="wave-char">&gt;</span>
+        </span>`,
+
             // Footer - COMPLETE
             footerText: "Design and development by <a href='https://github.com/Marceagonzn' target='_blank'>Marcelo González</a>",
             footerDescription: "Software developer passionate about creating unique and functional digital experiences. Specialized in web and mobile applications.",
@@ -296,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
 
     // --- Cambio de idioma con botones de banderas ---
     const langEs = document.getElementById('lang-es');
@@ -344,28 +414,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-        // --- Animación WAVE para el título ---
+    // --- Animación WAVE para el título ---
+    // --- Animación WAVE para el título (versión automática mejorada) ---
     function applyWaveAnimation() {
         const heroTitle = document.querySelector('.hero-title');
         if (!heroTitle) return;
-        
+
+        // Verificar si ya tiene la estructura wave (para no procesar dos veces)
+        if (heroTitle.querySelector('.wave-char')) {
+            return; // Ya está procesado
+        }
+
         // Obtener el HTML original respetando el span .highlight-name
         const originalHTML = heroTitle.innerHTML;
-        
+
         // Crear un contenedor temporal para procesar
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = originalHTML;
-        
+
         // Función para procesar nodos de texto y convertirlos en spans
         function processNode(node) {
             if (node.nodeType === Node.TEXT_NODE && node.textContent.trim().length > 0) {
                 const text = node.textContent;
                 const fragment = document.createDocumentFragment();
-                
+
                 for (let i = 0; i < text.length; i++) {
                     const char = text.charAt(i);
                     if (char === ' ') {
-                        // Para espacios, añadir un espacio normal
                         fragment.appendChild(document.createTextNode(' '));
                     } else {
                         const span = document.createElement('span');
@@ -376,11 +451,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 return fragment;
             } else if (node.nodeType === Node.ELEMENT_NODE) {
-                // Si es un elemento (como el span .highlight-name), procesar sus hijos
+                // Preservar la clase highlight-name
                 if (node.classList && node.classList.contains('highlight-name')) {
                     node.classList.add('wave-text');
                 }
-                
+
                 // Procesar cada hijo
                 const children = Array.from(node.childNodes);
                 children.forEach(child => {
@@ -392,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             return null;
         }
-        
+
         // Procesar el contenido
         const children = Array.from(tempDiv.childNodes);
         children.forEach(child => {
@@ -401,21 +476,89 @@ document.addEventListener('DOMContentLoaded', () => {
                 tempDiv.replaceChild(processed, child);
             }
         });
-        
+
         // Actualizar el HTML
         heroTitle.innerHTML = tempDiv.innerHTML;
     }
-    
+
     // Aplicar la animación después de que cambie el idioma
     applyWaveAnimation();
-    
+
     // Re-aplicar cuando cambie el idioma
     const languageSelect = document.getElementById('language-select');
     if (languageSelect) {
-        languageSelect.addEventListener('change', function() {
+        languageSelect.addEventListener('change', function () {
             // Pequeño retraso para que el DOM se actualice
             setTimeout(applyWaveAnimation, 50);
         });
+    }
+
+    // --- Animación de contador con efecto cascada ---
+    function animateCounters() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+
+        function getPureNumber(text) {
+            return parseInt(text.replace(/[^0-9]/g, ''));
+        }
+
+        function getSymbol(text) {
+            if (text.includes('+')) return '+';
+            if (text.includes('%')) return '%';
+            return '';
+        }
+
+        // Configurar datos iniciales
+        statNumbers.forEach(stat => {
+            const originalText = stat.textContent;
+            const targetNumber = getPureNumber(originalText);
+            const symbol = getSymbol(originalText);
+
+            stat.setAttribute('data-target', targetNumber);
+            stat.setAttribute('data-symbol', symbol);
+            stat.textContent = '0' + symbol; // Comenzar desde 0
+        });
+
+        // Animar cada contador con retraso
+        statNumbers.forEach((stat, index) => {
+            const target = parseInt(stat.getAttribute('data-target'));
+            const symbol = stat.getAttribute('data-symbol');
+
+            let current = 0;
+            const duration = 2000; // 2 segundos
+            const increment = target / (duration / 16);
+            const delay = index * 300; // 300ms de retraso entre cada contador
+
+            setTimeout(() => {
+                function updateCounter() {
+                    current += increment;
+
+                    if (current < target) {
+                        stat.textContent = Math.floor(current) + symbol;
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        stat.textContent = target + symbol;
+                    }
+                }
+
+                updateCounter();
+            }, delay);
+        });
+    }
+
+    // Observar cuando la sección es visible
+    const statsSection = document.querySelector('.about-stats-section');
+
+    if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounters();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        observer.observe(statsSection);
     }
 
 });
