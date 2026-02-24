@@ -437,6 +437,54 @@
         </div>
     </section>
 
+    <!-- Sección de Proyectos Web - CARRUSEL (EDITABLE) -->
+    <section class="portfolio-section-modern scroll-animate" id="web-projects-section">
+        <div class="portfolio-container">
+            <!-- Header con estilo similar -->
+            <div class="portfolio-header">
+                <div class="portfolio-tagline">
+                    <span class="portfolio-line"></span>
+                    <span class="portfolio-tagline-text" data-translate="webProjectsTagline">Proyectos Web</span>
+                </div>
+                <h2 class="portfolio-title" data-translate="webProjectsTitle">
+                    <span class="portfolio-title-highlight">Aplicaciones</span> web desarrolladas
+                </h2>
+                <p class="portfolio-description" data-translate="webProjectsDescription">
+                    Proyectos web completos, desde landing pages hasta aplicaciones movil.
+                </p>
+            </div>
+
+            <!-- Sección de Proyectos Web en Carrusel -->
+            <div class="projects-section" id="web-projects-section-carousel">
+                <div class="projects-header">
+                    <h3 class="projects-subtitle">
+                        <span class="material-symbols-outlined projects-subtitle-icon">language</span>
+                        Proyectos Web Destacados
+                    </h3>
+                    <div class="projects-nav">
+                        <button class="projects-nav-btn web-projects-prev" id="webProjectsPrev">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button class="projects-nav-btn web-projects-next" id="webProjectsNext">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Carrusel de Proyectos Web -->
+                <div class="projects-carousel-container">
+                    <div class="projects-carousel" id="webProjectsCarousel">
+                        <!-- Los proyectos se cargarán dinámicamente -->
+                        <div class="loading-message-modern">Cargando proyectos web...</div>
+                    </div>
+                </div>
+
+                <!-- Dots del carrusel -->
+                <div class="carousel-dots-modern" id="webProjectsDots"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact -->
     <!-- Contact Section - Neumorfismo Minimalista -->
     <section class="contact-section-modern scroll-animate" id="contact">
@@ -651,7 +699,21 @@
         </div>
     </footer>
 
+    <!-- Modal Expandible para Proyectos Web -->
+    <div class="expandable-modal" id="projectModal">
+        <div class="expandable-modal-content">
+            <button class="expandable-modal-close" id="closeProjectModal">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+
+            <div class="expandable-modal-grid" id="modalContent">
+                <!-- El contenido se llenará dinámicamente -->
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
+    <script src="js/web-projects-carousel.js"></script> <!-- NUEVO (reemplaza al anterior) -->
     <script src="js/project.js"></script>
     <script src="particle123.js"></script>
     <script src="js/script.js"></script>
