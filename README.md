@@ -1,6 +1,6 @@
 
 # Portafolio
-![Screenshot](img/screen.gif)
+![Screenshot](screen2.gif)
 
 
 ## 🔗 Links
