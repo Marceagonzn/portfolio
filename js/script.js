@@ -160,17 +160,18 @@ document.addEventListener('DOMContentLoaded', () => {
             pythonDesc: "Automatización, Scripts y Análisis de Datos",
             cppTitle: "C++",
             cppDesc: "Gestión de Memoria, Algoritmos y POO",
+            projectsSubtitle: "Proyectos Destacados",
 
             // About Me - NUEVAS TRADUCCIONES
             aboutTagline: "Sobre Mí",
-            aboutTitle: "Creando experiencias digitales fluidas a través del <span class=\"about-title-highlight\">código</span> y el diseño.",
-            aboutText1: "Soy desarrollador mobile y web enfocado en construir aplicaciones funcionales, escalables y centradas en el usuario.",
+            aboutTitle: "Desarrollando software que conecta código, sistemas y <span class=\"about-title-highlight\"> personas.</span>",
+            aboutText1: "Soy estudiante de Ingeniería Informática apasionado por el desarrollo de software, Linux, redes y automatización. Disfruto construir herramientas útiles, aplicaciones y proyectos que resuelvan problemas reales.",
             aboutText2: "Me especializo en la intersección entre UI/UX e ingeniería, combinando diseño intuitivo con soluciones técnicas sólidas.",
-            aboutText3: "Actualmente profundizo en React y React Native para desarrollar aplicaciones cross-platform de alto rendimiento, manteniendo una mentalidad de mejora continua y crecimiento profesional.",
+            aboutText3: "Actualmente exploro Python, React Native, administración de sistemas y tecnologías de IA para desarrollar soluciones modernas y escalables.",
             socialMedia: "Redes Sociales",
             openToOpportunities: "Abierto a nuevas oportunidades",
             focusArea: "Área de Enfoque",
-            focusTitle: "Software Developer",
+            focusTitle: "Software Engineering",
             yearsExperience: "Años de Experiencia",
             projectsCompleted: "Proyectos Completados",
             certifications: "Certificaciones",
@@ -273,14 +274,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // About Me - NEW TRANSLATIONS
             aboutTagline: "About Me",
-            aboutTitle: "Crafting seamless digital experiences through <span class=\"about-title-highlight\">code</span> and design.",
-            aboutText1: "I am a mobile and web developer focused on building functional, scalable, and user-centered applications.",
+            aboutTitle: "Building software that connects code, systems, and  <span class=\"about-title-highlight\">people</span>",
+            aboutText1: "I'm a Computer Engineering student passionate about software development, Linux, networking, and automation. I enjoy building useful tools, applications, and projects that solve real-world problems.",
             aboutText2: "I specialize at the intersection of UI/UX and engineering, combining intuitive design with solid technical solutions.",
-            aboutText3: "I'm currently deepening my knowledge in React and React Native to develop high-performance cross-platform applications, maintaining a mindset of continuous improvement and professional growth.",
+            aboutText3: "Currently, I'm expanding my expertise in Python, React Native, system administration, and AI technologies to build modern and scalable solutions.",
             socialMedia: "Social Media",
             openToOpportunities: "Open to new opportunities",
             focusArea: "Focus Area",
-            focusTitle: "Software Developer",
+            focusTitle: "Software Engineering",
             yearsExperience: "Years Experience",
             projectsCompleted: "Projects Completed",
             certifications: "Certifications",
@@ -288,6 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Portfolio - NEW TRANSLATIONS
             portfolioTagline: "Portfolio & Achievements",
+            projectsSubtitle: "Featured Projects",
             portfolioTitle: "Exploring my technical <span class=\"portfolio-title-highlight\">journey</span>",
             portfolioDescription: "Featured projects that demonstrate my passion for software development and creating innovative solutions.",
 
